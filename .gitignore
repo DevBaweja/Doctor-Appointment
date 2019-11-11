@@ -1,9 +1,9 @@
-bin/
-
-bin/ConvertAppletintoJApplet/
-src/ConvertAppletintoJApplet/
-
 .settings
 .classpath
 .project
 README.md
+
+bin/
+
+bin/ConvertAppletintoJApplet/
+src/ConvertAppletintoJApplet/
