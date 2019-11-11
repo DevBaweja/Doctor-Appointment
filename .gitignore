@@ -1,9 +1,11 @@
+# Removing Eclipse Setting
 .settings
 .classpath
 .project
-README.md
 
+# Removing bin
 bin/
 
+# Removing Reference
 bin/ConvertAppletintoJApplet/
 src/ConvertAppletintoJApplet/
