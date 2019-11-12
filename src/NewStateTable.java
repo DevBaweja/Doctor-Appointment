@@ -22,6 +22,7 @@ public class NewStateTable {
 			ResultSet rs = stmt.executeQuery("select distinct city_state from cities");
 
 			Statement istmt = icon.createStatement();
+			istmt.executeUpdate("create database if not exists states");
 			istmt.execute("use states");
 			istmt.executeUpdate("create table if not exists _statestb(state_name varchar(100) primary key)");
 			
