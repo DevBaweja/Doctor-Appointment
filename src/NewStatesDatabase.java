@@ -7,7 +7,8 @@ import java.sql.Statement;
 
 public class NewStatesDatabase {
 
-	public static void main(String[] args) {
+	public NewStatesDatabase() {
+		// TODO Auto-generated constructor stub
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection icon = DriverManager.getConnection("jdbc:mysql://localhost:3306","root","");
