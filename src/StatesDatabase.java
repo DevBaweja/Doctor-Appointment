@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class StatesDatabase {
 
 	// Make it main in case of creating states database
-	public StatesDatabase() {
+	public static void main(String[] args) {
 		// TODO Auto-generated constructor stub
     	   try {
 				Class.forName("com.mysql.jdbc.Driver");
@@ -17,12 +17,10 @@ public class StatesDatabase {
 				istmt.executeUpdate("create database if not exists state");
 				istmt.execute("Use state");
 				// table exist already from file cities.sql
-				ResultSet irs = istmt.executeQuery("select distinct city_state from cities");
-				int c = 0;
-				while(irs.next())
-				{
-					c++;
-				}
+				ResultSet irs = istmt.executeQuery("select count(distinct city_state) as count from cities");
+				irs.next();
+				int c = irs.getInt("count");
+			
 				String originalstates[] = new String[c];
 				String manipulatestates[]  = new String[c];
 				
@@ -47,10 +45,10 @@ public class StatesDatabase {
 				
 				for (int j = 0; j < c; j++) 
 				{
-					PreparedStatement fpstmt = con.prepareStatement("select distinct city_name from cities where city_state=?");
-					fpstmt.setString(1, originalstates[j]);
+					PreparedStatement ipstmt = con.prepareStatement("select distinct city_name from cities where city_state=?");
+					ipstmt.setString(1, originalstates[j]);
 					
-					ResultSet frs =  fpstmt.executeQuery(); // Cities of particular state
+					ResultSet frs =  ipstmt.executeQuery(); // Cities of particular state
 					// No Need of state database
 					Statement fstmt = con.createStatement();
 					fstmt.executeUpdate("create database if not exists states");
@@ -58,13 +56,13 @@ public class StatesDatabase {
 					fstmt.executeUpdate("create table if not exists "+manipulatestates[j]+"Tb(cities_names varchar(150) primary key)");
 					while(frs.next()) // Every city of particular state
 						{
-							PreparedStatement finalpstmt = con.prepareStatement("insert into "+manipulatestates[j]+"Tb(cities_names) values(?)");
-							finalpstmt.setString(1, frs.getString("city_name")); // Using previous result set
-							finalpstmt.executeUpdate();
+							PreparedStatement fpstmt = con.prepareStatement("insert into "+manipulatestates[j]+"Tb(cities_names) values(?)");
+							fpstmt.setString(1, frs.getString("city_name")); // Using previous result set
+							fpstmt.executeUpdate();
 						}
 					// Every iteration one city is inserted to that particular state table
 					
-					istmt.execute("Use state"); // Again reverting previous database
+					fstmt.execute("Use state"); // Again reverting previous database
 				}
 								
 				con.close(); 
