@@ -8,7 +8,8 @@ import java.sql.Statement;
 public class StatesDatabase {
 
 	// Make it main in case of creating states database
-	public static void main(String[] args) {
+	public StatesDatabase() 
+	 {
 		// TODO Auto-generated constructor stub
     	   try {
 				Class.forName("com.mysql.jdbc.Driver");
