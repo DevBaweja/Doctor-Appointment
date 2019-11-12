@@ -1,22 +1,16 @@
-import java.awt.FlowLayout;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JApplet;
-import javax.swing.JPanel;
-public class CitiesAndState1 extends JPanel{
 
-	
-	//public void init()
-	public CitiesAndState1() 
-	{
- 	    
+public class StatesDatabase {
+
+	// Make it main in case of creating states database
+	public StatesDatabase() {
+		// TODO Auto-generated constructor stub
     	   try {
-				
-				setLayout(new FlowLayout());
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306","root","");
 				Statement istmt = con.createStatement();
@@ -45,32 +39,32 @@ public class CitiesAndState1 extends JPanel{
 				}
 				
 				for (int j = 0; j < c; j++) 
-					System.out.println(originalstates[j]);
-					
-				System.out.println();
-				
-				for (int j = 0; j < c; j++) 
-					System.out.println(manipulatestates[j]);
-				
+					{
+						System.out.println(originalstates[j]);
+						System.out.println(manipulatestates[j]);
+					}
+
 				
 				for (int j = 0; j < c; j++) 
 				{
 					PreparedStatement fpstmt = con.prepareStatement("select distinct city_name from cities where city_state=?");
 					fpstmt.setString(1, originalstates[j]);
 					
-					ResultSet frs =  fpstmt.executeQuery(); // that respective city_state
+					ResultSet frs =  fpstmt.executeQuery(); // Cities of particular state
+					// No Need of state database
 					Statement fstmt = con.createStatement();
 					fstmt.executeUpdate("create database if not exists states");
 					fstmt.execute("Use states");
 					fstmt.executeUpdate("create table if not exists "+manipulatestates[j]+"Tb(cities_names varchar(150) primary key)");
-					while(frs.next())
+					while(frs.next()) // Every city of particular state
 						{
-							
 							PreparedStatement finalpstmt = con.prepareStatement("insert into "+manipulatestates[j]+"Tb(cities_names) values(?)");
-							finalpstmt.setString(1, frs.getString("city_name"));
+							finalpstmt.setString(1, frs.getString("city_name")); // Using previous result set
 							finalpstmt.executeUpdate();
 						}
-					istmt.execute("Use state");
+					// Every iteration one city is inserted to that particular state table
+					
+					istmt.execute("Use state"); // Again reverting previous database
 				}
 								
 				con.close(); 
@@ -83,8 +77,5 @@ public class CitiesAndState1 extends JPanel{
 				ae.printStackTrace();
 			}
 
-    	   //add(cbstate);
-    	   //add(cbcities);
-    	 //  cbstate.addItemListener(this);
 	}
 }
