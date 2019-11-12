@@ -21,10 +21,8 @@ public class PatientTabbedBar extends JFrame implements ActionListener{
                 
                 public PatientTabbedBar()
                 {
-                	userp = PatientLoginHome.userp;
-               
-                	
-                	
+                	userp = PatientLoginHome.userp; 
+
                 	userlogout();
 
                 	setVisible(true);
