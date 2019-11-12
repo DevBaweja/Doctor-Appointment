@@ -126,7 +126,7 @@ public class PatientID1 extends JDialog implements ActionListener,ItemListener,F
                            cbstate= new JComboBox();
                            cbstate.addItem("Select State");
           
-                            fillcbstate();
+                           fillcbstate();
                                
                            taddress = new JTextArea();
                            P = new JPanel();
