@@ -7,8 +7,8 @@ import java.sql.Statement;
 public class StateTable {
 
 	public StateTable() {
+	
 		// TODO Auto-generated constructor stub
-	System.out.println();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306","root","");
@@ -29,6 +29,7 @@ public class StateTable {
 			}
 			
 			stmt.execute("use states");
+			stmt.execute("create table if not exists _statestb(state_name varchar(100) primary key)");
 			for (int j = 0; j < original.length; j++) 
 			{
 				PreparedStatement pre = con.prepareStatement("insert into _statestb values(?)");
