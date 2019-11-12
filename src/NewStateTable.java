@@ -4,37 +4,33 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class StateTable {
+public class NewStateTable {
 
-	public StateTable() {
+	public NewStateTable()
+	{
 		// TODO Auto-generated constructor stub
 	System.out.println();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306","root","");
+			Connection icon = DriverManager.getConnection("jdbc:mysql://localhost:3306","root","");
+			
 			Statement stmt = con.createStatement();
 			stmt.executeUpdate("create database if not exists state");
 			stmt.execute("use state");
 			// Tables exists from cities.sql
-			ResultSet rscount = stmt.executeQuery("select count(distinct city_state) as count from cities");
-			rscount.next();
-			String original[] = new String[rscount.getInt("count")];
-			
 			ResultSet rs = stmt.executeQuery("select distinct city_state from cities");
-			int i=0;
+
+			Statement istmt = icon.createStatement();
+			istmt.execute("use states");
+			istmt.executeUpdate("create table if not exists _statestb(state_name varchar(100) primary key)");
+			
 			while(rs.next())
 			{
-				original[i] = rs.getString("city_state");
-				i++;
-			}
-			
-			stmt.execute("use states");
-			for (int j = 0; j < original.length; j++) 
-			{
-				PreparedStatement pre = con.prepareStatement("insert into _statestb values(?)");
-				pre.setString(1, original[j]);
-				System.out.println(original[j]);
-				pre.executeUpdate();
+				PreparedStatement ipre = icon.prepareStatement("insert into _statestb values(?)");
+				ipre.setString(1, rs.getString("city_state"));
+				System.out.println(rs.getString("city_state"));
+				ipre.executeUpdate();
 			}
 			
 		} catch (Exception e) {
