@@ -16,7 +16,7 @@ public class StatesDatabase {
 				Statement istmt = con.createStatement();
 				istmt.executeUpdate("create database if not exists state");
 				istmt.execute("Use state");
-				// table exist already
+				// table exist already from file cities.sql
 				ResultSet irs = istmt.executeQuery("select distinct city_state from cities");
 				int c = 0;
 				while(irs.next())
