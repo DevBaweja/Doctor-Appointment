@@ -119,7 +119,7 @@ public class PatientInfo extends JPanel implements ActionListener,ItemListener,F
 		bnext.addActionListener(this);
 		bprevious.addActionListener(this);
 
-		lbuser=new JLabel("userp NAME : ");
+		lbuser=new JLabel("USER NAME : ");
 		lbemail=new JLabel("EMAIL : ");
 		lbmobile=new JLabel("PERSONAL NO :");
 		lbgender=new JLabel("GENDER : ");
