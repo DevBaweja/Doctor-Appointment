@@ -1,9 +1,9 @@
- import java.awt.Color;
+import java.awt.Color;
 import java.awt.Dimension;
+
 import javax.swing.JApplet;
 import javax.swing.JTabbedPane;
 
-@SuppressWarnings("serial")
 public class DemoMain extends JApplet{
 
 	JTabbedPane jtp;
@@ -13,6 +13,7 @@ public class DemoMain extends JApplet{
 		jtp.setBackground(Color.blue);
 		setSize(new Dimension(1000,800));
 		setPreferredSize(new Dimension(1000, 800));
+		
 	//  jtp.addTab("Login", new MainImagesCLO());
 		jtp.addTab("Admin Login", new AdminLoginHome());
 		jtp.addTab("Patient Login", new PatientLoginHome());
