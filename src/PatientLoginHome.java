@@ -127,7 +127,7 @@ public class PatientLoginHome  extends JPanel implements ActionListener{
 	                   new  PatientTabbedBar();
 					}
 					else {
-						 JOptionPane.showMessageDialog(null,txpatient.getText()+" does not exists.","Incorrect Username or Password",JOptionPane.ERROR_MESSAGE);
+						 JOptionPane.showMessageDialog(null,txpatient.getText()+" does not exists.","Incorrect",JOptionPane.ERROR_MESSAGE);
 							refresh();
 		              	   txpatient.requestFocus();
 					}
