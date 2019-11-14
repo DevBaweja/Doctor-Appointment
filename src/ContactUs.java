@@ -22,7 +22,7 @@ public class ContactUs extends JPanel{
                                 setLayout(new BorderLayout());
                                 lbimg= new JLabel(new ImageIcon("img.jpg"));
                                 lbaddress=new JLabel("Address : "+ "3-D-32 JNV Colony,Bikaner,Rajasthan");
-                                lbemail=new JLabel("mail us at:  "+"  OnlineDoct@gmail.com");
+                                lbemail=new JLabel("mail us at:  "+"  onlinedoct24@gmail.com");
                                 lbcontact = new JLabel(":: Contact Us ::");
                                 
                                 p1=new JPanel();
