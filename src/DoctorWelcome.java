@@ -21,8 +21,7 @@ public class DoctorWelcome extends JPanel {
                 {
                 	userd = DoctorTabbedBar.userd;
                 	setVisible(true);
-                              //  lbpic=new JLabel(new ImageIcon("pic2.jpg"));
-                                lbimg=new JLabel(new ImageIcon("img2.jpg"));
+                                lbimg=new JLabel(new ImageIcon("medical-appointment.jpg"));
                                 lbwelcome = new JLabel("Welcome to online Doctor Appointment, Doctor "+userd);
                                 
                                 p1=new JPanel();

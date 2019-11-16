@@ -20,12 +20,8 @@ public class PatientWelcome extends JPanel {
                 
                 public  PatientWelcome()
                 {
-                	 userp = PatientTabbedBar.userp; // taking userpname from previous login form
-                
-                		
-                		setVisible(true);
-                              //  lbimg=new JLabel(new ImageIcon("pic2.jpg"));
-                                lbimg=new JLabel(new ImageIcon("img2.jpg"));
+                	 			userp = PatientTabbedBar.userp;
+                                lbimg=new JLabel(new ImageIcon("medical-appointment.jpg"));
                                 lbwelcome = new JLabel("Welcome to online Doctor Appointment, Patient "+userp);
                                 
                                 p1=new JPanel();

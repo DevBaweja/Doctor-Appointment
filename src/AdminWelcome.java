@@ -18,9 +18,8 @@ public class AdminWelcome extends JPanel {
                 JLabel lbimg,lbwelcome,lbpic;
                 public AdminWelcome()
                 {
-                              //  lbimg=new JLabel(new ImageIcon("pic2.jpg"));
-                                lbimg=new JLabel(new ImageIcon("img2.jpg"));
-                                lbwelcome = new JLabel("Welcome to online Doctor Appointment, Aryaman");
+                                lbimg=new JLabel(new ImageIcon("medical-appointment.jpg"));
+                                lbwelcome = new JLabel("Welcome to online Doctor Appointment, Admin");
                                 
                                 p1=new JPanel();
                                 p2=new JPanel();

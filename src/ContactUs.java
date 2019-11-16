@@ -20,9 +20,9 @@ public class ContactUs extends JPanel{
                 {
                 	setVisible(true);
                                 setLayout(new BorderLayout());
-                                lbimg= new JLabel(new ImageIcon("img.jpg"));
+                                lbimg= new JLabel(new ImageIcon("contact-us.jpg"));
                                 lbaddress=new JLabel("Address : "+ "3-D-32 JNV Colony,Bikaner,Rajasthan");
-                                lbemail=new JLabel("mail us at:  "+"  onlinedoct24@gmail.com");
+                                lbemail=new JLabel("Mail us at:  "+"  onlinedoct24@gmail.com");
                                 lbcontact = new JLabel(":: Contact Us ::");
                                 
                                 p1=new JPanel();
@@ -31,6 +31,7 @@ public class ContactUs extends JPanel{
                                 
                                 p1.add(lbimg);
                                 p2.add(lbaddress);
+                                p2.add(new JLabel("\t"));
                                 p2.add(lbemail);
                                 p3.add(lbcontact);
                                 

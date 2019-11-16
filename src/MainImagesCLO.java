@@ -49,7 +49,7 @@ public class MainImagesCLO extends JPanel implements ActionListener{
 				// For CardLayout
 				Pimage1 = new JPanel();
 				lb1 = new JLabel();
-				lb1.setIcon(new ImageIcon("img3.png"));
+				lb1.setIcon(new ImageIcon("medical-appointment.png"));
 
 				Pimage1.add(lb1);
 				
@@ -57,13 +57,13 @@ public class MainImagesCLO extends JPanel implements ActionListener{
 				Pimage2 = new JPanel();
 				JLabel lb2;
 				lb2=new JLabel();
-				lb2.setIcon(new ImageIcon("cal.jpg"));
+				lb2.setIcon(new ImageIcon("calendar.jpg"));
 					
 				Pimage2.add(lb2);
 				
 				Pimage3 = new JPanel();
 				lb3=new JLabel();
-				lb3.setIcon(new ImageIcon("img.jpg"));
+				lb3.setIcon(new ImageIcon("contact-us.jpg"));
 				
 				Pimage3.add(lb3);
 				

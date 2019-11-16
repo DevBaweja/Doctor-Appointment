@@ -1,4 +1,19 @@
 import java.awt.*;
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +30,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
@@ -55,6 +71,7 @@ public class PatientID1 extends JDialog
 	String trialmobile, trialuser;
 	String place;
 	GridLayout g11, g12, g13, goverall;
+	String gmail_user,gmail_password,gmail_message,gmail_subject;
 
 	public PatientID1() {
 
@@ -71,6 +88,8 @@ public class PatientID1 extends JDialog
 		trialuser = "";
 		place = "Example123@gmail.com";
 		String need = "*";
+		gmail_user = "onlinedoct24@gmail.com";
+		gmail_password = "0nline_d@ct24";
 
 		lbuser = new JLabel("User Name" + need);
 		lbpass = new JLabel("New Password" + need);
@@ -395,10 +414,9 @@ public class PatientID1 extends JDialog
 				// no related disease and past records
 				JOptionPane.showMessageDialog(null, "Kindly fill all the required entries of Form", "Unfilled Form",
 						JOptionPane.ERROR_MESSAGE);
-			else 
+			else
 				createPatient();
-		}
-		else if (src == btrefresh) {
+		} else if (src == btrefresh) {
 			txuser.setText("");
 			txpass.setText("");
 
@@ -503,6 +521,425 @@ public class PatientID1 extends JDialog
 				// this.dispose();
 
 				// Mail to patient about new account begin created
+				
+				String TO = txemail.getText();
+				gmail_subject = "Welcome to Online Doctor Appointment App";
+				// Add attachment in mail
+				// Giving some information about best doctors
+				gmail_message = "<h1>Hello! Welcome!!! </h1>"
+						+ "Ohhh my goodness, we're so thrilled you decided to join our family. Hats off making an execllent decision."
+						+ "You are officially in the loop to hear all about our most experienced doctors all around globe."
+						+ "<pre style='color:green'>It is health that is real wealth and not pieces of gold and silver.</pre>";
+				
+				gmail_message = "<!--Download - https://github.com/lime7/responsive-html-template.git-->\r\n" + 
+						"<html lang=\"en\">\r\n" + 
+						"<head>\r\n" + 
+						"	<meta charset=\"UTF-8\">\r\n" + 
+						"	<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\r\n" + 
+						"	<title>One Letter</title>\r\n" + 
+						"\r\n" + 
+						"	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\r\n" + 
+						"\r\n" + 
+						"	<style>\r\n" + 
+						"		.ReadMsgBody {width: 100%; background-color: #ffffff;}\r\n" + 
+						"		.ExternalClass {width: 100%; background-color: #ffffff;}\r\n" + 
+						"\r\n" + 
+						"				/* Windows Phone Viewport Fix */\r\n" + 
+						"		@-ms-viewport { \r\n" + 
+						"		    width: device-width; \r\n" + 
+						"		}\r\n" + 
+						"	</style>\r\n" + 
+						"\r\n" + 
+						"	<!--[if (gte mso 9)|(IE)]>\r\n" + 
+						"	    <style type=\"text/css\">\r\n" + 
+						"	        table {border-collapse: collapse;}\r\n" + 
+						"	        .mso {display:block !important;} \r\n" + 
+						"	    </style>\r\n" + 
+						"	<![endif]-->\r\n" + 
+						"\r\n" + 
+						"</head>\r\n" + 
+						"<body leftmargin=\"0\" topmargin=\"0\" marginwidth=\"0\" marginheight=\"0\" style=\"background: #e7e7e7; width: 100%; height: 100%; margin: 0; padding: 0;\">\r\n" + 
+						"	<!-- Mail.ru Wrapper -->\r\n" + 
+						"	<div id=\"mailsub\">\r\n" + 
+						"		<!-- Wrapper -->\r\n" + 
+						"		<center class=\"wrapper\" style=\"table-layout: fixed; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; padding: 0; margin: 0 auto; width: 100%; max-width: 960px;\">\r\n" + 
+						"			<!-- Old wrap -->\r\n" + 
+						"	        <div class=\"webkit\">\r\n" + 
+						"				<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" bgcolor=\"#ffffff\" style=\"padding: 0; margin: 0 auto; width: 100%; max-width: 960px;\">\r\n" + 
+						"					<tbody>\r\n" + 
+						"						<tr>\r\n" + 
+						"							<td align=\"center\">\r\n" + 
+						"								<!-- Start Section (1 column) -->\r\n" + 
+						"								<table id=\"intro\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" bgcolor=\"#4F6331\" align=\"center\" style=\"width: 100%; padding: 0; margin: 0; background-image: url(https://github.com/lime7/responsive-html-template/blob/master/index/intro__bg.png?raw=true); background-size: auto 102%; background-position: center center; background-repeat: no-repeat; background-color: #080e02\">\r\n" + 
+						"									<tbody >\r\n" + 
+						"										<tr><td colspan=\"3\" height=\"20\"></td></tr>\r\n" + 
+						"										<tr>\r\n" + 
+						"											<td width=\"330\" style=\"width: 33%;\"></td>\r\n" + 
+						"											<!-- Logo -->\r\n" + 
+						"											<td width=\"300\" style=\"width: 30%;\" align=\"center\">\r\n" + 
+						"												<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; display: block; outline: none; text-decoration: none; line-height: 60px; height: 60px; color: #ffffff; font-family: Verdana, Geneva, sans-serif;  -webkit-text-size-adjust:none;\">\r\n" + 
+						"													<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/logo.png?raw=true\" alt=\"One Letter\" width=\"193\" height=\"43\" border=\"0\" style=\"border: none; display: block; -ms-interpolation-mode: bicubic;\">\r\n" + 
+						"												</a>\r\n" + 
+						"											</td>\r\n" + 
+						"											<!-- Social Button -->\r\n" + 
+						"											<td width=\"330\" style=\"width: 33%;\" align=\"right\">\r\n" + 
+						"												<div style=\"text-align: center; max-width: 150px; width: 100%;\">\r\n" + 
+						"													<span>&nbsp;</span>\r\n" + 
+						"													<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; outline: none; text-decoration: none; line-height: 60px; color: #ffffff; font-family: Verdana, Geneva, sans-serif;  -webkit-text-size-adjust:none\">\r\n" + 
+						"														<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/f.png?raw=true\" alt=\"facebook.com\" border=\"0\" width=\"11\" height=\"23\" style=\"border: none; outline: none; -ms-interpolation-mode: bicubic;\">\r\n" + 
+						"													</a>\r\n" + 
+						"													<span>&nbsp;</span>\r\n" + 
+						"													<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; outline: none; text-decoration: none; line-height: 60px; color: #ffffff; font-family: Verdana, Geneva, sans-serif; -webkit-text-size-adjust:none\">\r\n" + 
+						"														<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/vk.png?raw=true\" alt=\"vk.com\" border=\"0\" width=\"39\" height=\"23\" style=\"border: none; outline: none; -ms-interpolation-mode: bicubic;\">\r\n" + 
+						"													</a>\r\n" + 
+						"													<span>&nbsp;</span>\r\n" + 
+						"													<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; outline: none; text-decoration: none; line-height: 60px; color: #ffffff; font-family: Verdana, Geneva, sans-serif; -webkit-text-size-adjust:none;\">\r\n" + 
+						"														<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/g+.png?raw=true\" alt=\"google.com\" border=\"0\" width=\"23\" height=\"23\" style=\"border: none; outline: none; -ms-interpolation-mode: bicubic;\">\r\n" + 
+						"													</a>\r\n" + 
+						"													<span>&nbsp;</span>\r\n" + 
+						"												</div>\r\n" + 
+						"											</td>\r\n" + 
+						"										</tr>\r\n" + 
+						"										<tr><td colspan=\"3\" height=\"100\"></td></tr>\r\n" + 
+						"										<!-- Main Title -->\r\n" + 
+						"										<tr>\r\n" + 
+						"											<td colspan=\"3\" height=\"60\" align=\"center\">\r\n" + 
+						"												<div border=\"0\" style=\"border: none; line-height: 60px; color: #ffffff; font-family: Verdana, Geneva, sans-serif; font-size: 52px; text-transform: uppercase; font-weight: bolder;\">HELLO, WORLD!</div>\r\n" + 
+						"											</td>\r\n" + 
+						"										</tr>\r\n" + 
+						"										<!-- Line 1 -->\r\n" + 
+						"										<tr>\r\n" + 
+						"											<td colspan=\"3\" height=\"20\" valign=\"bottom\" align=\"center\">\r\n" + 
+						"												<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/line-1.png?raw=true\" alt=\"line\" border=\"0\" width=\"464\" height=\"5\" style=\"border: none; outline: none; max-width: 464px; width: 100%; -ms-interpolation-mode: bicubic;\" >\r\n" + 
+						"											</td>\r\n" + 
+						"										</tr>\r\n" + 
+						"										<!-- Meta title -->\r\n" + 
+						"										<tr>\r\n" + 
+						"											<td colspan=\"3\">\r\n" + 
+						"												<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\" style=\"padding: 0; margin: 0; width: 100%;\">\r\n" + 
+						"													<tbody>\r\n" + 
+						"														<tr>\r\n" + 
+						"															<td width=\"90\" style=\"width: 9%;\"></td>\r\n" + 
+						"															<td align=\"center\">\r\n" + 
+						"																<div border=\"0\" style=\"border: none; height: 60px;\">\r\n" + 
+						"																	<p style=\"font-size: 18px; line-height: 24px; font-family: Verdana, Geneva, sans-serif; color: #ffffff; text-align: center; mso-table-lspace:0;mso-table-rspace:0;\">\r\n" + 
+						"																		This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.\r\n" + 
+						"																	</p>\r\n" + 
+						"																</div>\r\n" + 
+						"															</td>\r\n" + 
+						"															<td width=\"90\" style=\"width: 9%;\"></td>\r\n" + 
+						"														</tr>\r\n" + 
+						"													</tbody>\r\n" + 
+						"												</table>\r\n" + 
+						"											</td>\r\n" + 
+						"										</tr>\r\n" + 
+						"										<tr><td colspan=\"3\" height=\"160\"></td></tr>\r\n" + 
+						"										<tr>\r\n" + 
+						"											<td width=\"330\"></td>\r\n" + 
+						"											<!-- Button Start -->\r\n" + 
+						"											<td width=\"300\" align=\"center\" height=\"52\">\r\n" + 
+						"												<div style=\"background-image: url(https://github.com/lime7/responsive-html-template/blob/master/index/intro__btn.png?raw=true); background-size: 100% 100%; background-position: center center; width: 225px;\">\r\n" + 
+						"													<a href=\"#\" target=\"_blank\" width=\"160\" height=\"52\" border=\"0\" bgcolor=\"#009789\" style=\"border: none; outline: none; display: block; width:160px; height: 52px; text-transform: uppercase; text-decoration: none; font-size: 17px; line-height: 52px; color: #ffffff; font-family: Verdana, Geneva, sans-serif; text-align: center; background-color: #009789;  -webkit-text-size-adjust:none;\">\r\n" + 
+						"														Get it now\r\n" + 
+						"													</a>\r\n" + 
+						"												</div>\r\n" + 
+						"											</td>\r\n" + 
+						"											<td width=\"330\"></td>\r\n" + 
+						"										</tr>\r\n" + 
+						"										<tr><td colspan=\"3\" height=\"85\"></td></tr>\r\n" + 
+						"									</tbody>\r\n" + 
+						"								</table><!-- End Start Section -->\r\n" + 
+						"								<!-- Icon articles (4 columns) -->\r\n" + 
+						"								<table id=\"icon__article\" class=\"device\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" bgcolor=\"#ffffff\" align=\"center\" style=\"width: 100%; padding: 0; margin: 0; background-color: #ffffff\">\r\n" + 
+						"									<tbody>								\r\n" + 
+						"										<tr>\r\n" + 
+						"											<td align=\"center\">\r\n" + 
+						"												<div style=\"display: inline-block;\">\r\n" + 
+						"													<table width=\"240\" align=\"left\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"padding: 0; margin: 0; mso-table-lspace:0pt; mso-table-rspace:0pt;\"  class=\"article\">\r\n" + 
+						"													<tbody>\r\n" + 
+						"														<tr> <td colspan=\"3\" height=\"40\"></td> </tr>\r\n" + 
+						"														<tr>\r\n" + 
+						"															<td width=\"80\" style=\"width: 8%;\"></td>\r\n" + 
+						"															<td align=\"center\">\r\n" + 
+						"																<div class=\"imgs\">\r\n" + 
+						"																	<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; display: block; outline: none; text-decoration: none; line-height: 60px; height: 60px; color: #ffffff; font-family: Verdana, Geneva, sans-serif; margin: 0 30px; -webkit-text-size-adjust:none;\">\r\n" + 
+						"																		<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/ico-1.png?raw=true\" alt=\"icon\" border=\"0\" width=\"60\" height=\"60\" style=\"border: none; display: block; outline: none; -ms-interpolation-mode: bicubic;\">\r\n" + 
+						"																	</a>\r\n" + 
+						"																</div>\r\n" + 
+						"																<h3 border=\"0\" style=\"border: none; line-height: 14px; color: #212121; font-family: Verdana, Geneva, sans-serif; font-size: 16px; text-transform: uppercase; font-weight: normal; overflow: hidden; margin:17px 0 0px 0;\">Lorem Ipsum\r\n" + 
+						"																</h3>\r\n" + 
+						"																<p style=\"line-height: 20px; color: #727272; font-family: Verdana, Geneva, sans-serif; font-size: 16px; text-align: center; overflow: hidden; margin: 10px 0; mso-table-lspace:0;mso-table-rspace:0;\"> This is Photoshop's version  of Lorem\r\n" + 
+						"																</p>\r\n" + 
+						"															</td>\r\n" + 
+						"															<td width=\"80\" style=\"width: 8%;\"></td>\r\n" + 
+						"														</tr>\r\n" + 
+						"														<tr><td colspan=\"3\" height=\"10\"></td></tr>					\r\n" + 
+						"														<tr>\r\n" + 
+						"															<td colspan=\"3\" height=\"5\" valign=\"top\" align=\"center\">\r\n" + 
+						"																<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/line-2.png?raw=true\" alt=\"line\" border=\"0\" width=\"960\" height=\"5\" style=\"border: none; outline: none; max-width: 960px; width: 100%; -ms-interpolation-mode: bicubic;\" >\r\n" + 
+						"															</td>\r\n" + 
+						"														</tr>						\r\n" + 
+						"													</tbody>\r\n" + 
+						"													</table>\r\n" + 
+						"												</div>\r\n" + 
+						"\r\n" + 
+						"												<div style=\"display: inline-block; margin-left: -4px;\">\r\n" + 
+						"													<table width=\"240\" align=\"left\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"padding: 0; margin: 0; mso-table-lspace:0pt; mso-table-rspace:0pt;\" class=\"article\">\r\n" + 
+						"													<tbody>\r\n" + 
+						"														<tr> <td colspan=\"3\" height=\"40\"></td> </tr>\r\n" + 
+						"														<tr>\r\n" + 
+						"															<td width=\"80\" style=\"width: 8%;\"></td>\r\n" + 
+						"															<td align=\"center\">\r\n" + 
+						"																<div class=\"imgs\">\r\n" + 
+						"																	<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; display: block; outline: none; text-decoration: none; line-height: 60px; height: 60px; color: #ffffff; font-family: Verdana, Geneva, sans-serif; margin: 0 30px; -webkit-text-size-adjust:none;\">\r\n" + 
+						"																		<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/ico-2.png?raw=true\" alt=\"icon\" border=\"0\" width=\"60\" height=\"60\" style=\"border: none; display: block; outline: none; -ms-interpolation-mode: bicubic;\">\r\n" + 
+						"																	</a>\r\n" + 
+						"																</div>\r\n" + 
+						"																<h3 border=\"0\" style=\"border: none; line-height: 14px; color: #212121; font-family: Verdana, Geneva, sans-serif; font-size: 16px; text-transform: uppercase; font-weight: normal; overflow: hidden; margin:17px 0 0px 0;\">Lorem Ipsum\r\n" + 
+						"																</h3>\r\n" + 
+						"																<p style=\"line-height: 20px; color: #727272; font-family: Verdana, Geneva, sans-serif; font-size: 16px; text-align: center; overflow: hidden; margin: 10px 0; mso-table-lspace:0;mso-table-rspace:0;\"> This is Photoshop's version  of Lorem\r\n" + 
+						"																</p>\r\n" + 
+						"															</td>\r\n" + 
+						"															<td width=\"80\" style=\"width: 8%;\"></td>\r\n" + 
+						"														</tr>\r\n" + 
+						"														<tr><td colspan=\"3\" height=\"10\"></td></tr>					\r\n" + 
+						"														<tr>\r\n" + 
+						"															<td colspan=\"3\" height=\"5\" valign=\"top\" align=\"center\">\r\n" + 
+						"																<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/line-2.png?raw=true\" alt=\"line\" border=\"0\" width=\"960\" height=\"5\" style=\"border: none; outline: none; max-width: 960px; width: 100%; -ms-interpolation-mode: bicubic;\" >\r\n" + 
+						"															</td>\r\n" + 
+						"														</tr>					\r\n" + 
+						"													</tbody>\r\n" + 
+						"													</table>\r\n" + 
+						"												</div>\r\n" + 
+						"\r\n" + 
+						"												<div style=\"display: inline-block; margin-left: -4px;\">\r\n" + 
+						"													<table width=\"240\" align=\"left\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"padding: 0; margin: 0; mso-table-lspace:0pt; mso-table-rspace:0pt;\" class=\"article\">\r\n" + 
+						"													<tbody>\r\n" + 
+						"														<tr> <td colspan=\"3\" height=\"40\"></td> </tr>\r\n" + 
+						"														<tr>\r\n" + 
+						"															<td width=\"80\" style=\"width: 8%;\"></td>\r\n" + 
+						"															<td align=\"center\">\r\n" + 
+						"																<div class=\"imgs\">\r\n" + 
+						"																	<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; display: block; outline: none; text-decoration: none; line-height: 60px; height: 60px; color: #ffffff; font-family: Verdana, Geneva, sans-serif; margin: 0 30px; -webkit-text-size-adjust:none;\">\r\n" + 
+						"																		<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/ico-3.png?raw=true\" alt=\"icon\" border=\"0\" width=\"60\" height=\"60\" style=\"border: none; display: block; outline: none; -ms-interpolation-mode: bicubic;\">\r\n" + 
+						"																	</a>\r\n" + 
+						"																</div>\r\n" + 
+						"																<h3 border=\"0\" style=\"border: none; line-height: 14px; color: #212121; font-family: Verdana, Geneva, sans-serif; font-size: 16px; text-transform: uppercase; font-weight: normal; overflow: hidden; margin:17px 0 0px 0;\">Lorem Ipsum\r\n" + 
+						"																</h3>\r\n" + 
+						"																<p style=\"line-height: 20px; color: #727272; font-family: Verdana, Geneva, sans-serif; font-size: 16px; text-align: center; overflow: hidden; margin: 10px 0; mso-table-lspace:0;mso-table-rspace:0;\"> This is Photoshop's version  of Lorem\r\n" + 
+						"																</p>\r\n" + 
+						"															</td>\r\n" + 
+						"															<td width=\"80\" style=\"width: 8%;\"></td>\r\n" + 
+						"														</tr>\r\n" + 
+						"														<tr><td colspan=\"3\" height=\"10\"></td></tr>					\r\n" + 
+						"														<tr>\r\n" + 
+						"															<td colspan=\"3\" height=\"5\" valign=\"top\" align=\"center\">\r\n" + 
+						"																<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/line-2.png?raw=true\" alt=\"line\" border=\"0\" width=\"960\" height=\"5\" style=\"border: none; outline: none; max-width: 960px; width: 100%; -ms-interpolation-mode: bicubic;\" >\r\n" + 
+						"															</td>\r\n" + 
+						"														</tr>					\r\n" + 
+						"													</tbody>\r\n" + 
+						"													</table>\r\n" + 
+						"												</div>\r\n" + 
+						"\r\n" + 
+						"												<div style=\"display: inline-block; margin-left: -4px;\">\r\n" + 
+						"													<table width=\"240\" align=\"left\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"padding: 0; margin: 0; mso-table-lspace:0pt; mso-table-rspace:0pt;\" class=\"article\">\r\n" + 
+						"													<tbody>\r\n" + 
+						"														<tr> <td colspan=\"3\" height=\"40\"></td> </tr>\r\n" + 
+						"														<tr>\r\n" + 
+						"															<td width=\"80\" style=\"width: 8%;\"></td>\r\n" + 
+						"															<td align=\"center\">\r\n" + 
+						"																<div class=\"imgs\">\r\n" + 
+						"																	<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; display: block; outline: none; text-decoration: none; line-height: 60px; height: 60px; color: #ffffff; font-family: Verdana, Geneva, sans-serif; margin: 0 30px; -webkit-text-size-adjust:none;\">\r\n" + 
+						"																		<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/ico-4.png?raw=true\" alt=\"icon\" border=\"0\" width=\"60\" height=\"60\" style=\"border: none; display: block; outline: none; -ms-interpolation-mode: bicubic;\">\r\n" + 
+						"																	</a>\r\n" + 
+						"																</div>\r\n" + 
+						"																<h3 border=\"0\" style=\"border: none; line-height: 14px; color: #212121; font-family: Verdana, Geneva, sans-serif; font-size: 16px; text-transform: uppercase; font-weight: normal; overflow: hidden; margin:17px 0 0px 0;\">Lorem Ipsum\r\n" + 
+						"																</h3>\r\n" + 
+						"																<p style=\"line-height: 20px; color: #727272; font-family: Verdana, Geneva, sans-serif; font-size: 16px; text-align: center; overflow: hidden; margin: 10px 0; mso-table-lspace:0;mso-table-rspace:0;\"> This is Photoshop's version  of Lorem\r\n" + 
+						"																</p>\r\n" + 
+						"															</td>\r\n" + 
+						"															<td width=\"80\" style=\"width: 8%;\"></td>\r\n" + 
+						"														</tr>\r\n" + 
+						"														<tr><td colspan=\"3\" height=\"10\"></td></tr>					\r\n" + 
+						"														<tr>\r\n" + 
+						"															<td colspan=\"3\" height=\"5\" valign=\"top\" align=\"center\">\r\n" + 
+						"																<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/line-2.png?raw=true\" alt=\"line\" border=\"0\" width=\"960\" height=\"5\" style=\"border: none; outline: none; max-width: 960px; width: 100%; -ms-interpolation-mode: bicubic; \" >\r\n" + 
+						"															</td>\r\n" + 
+						"														</tr>					\r\n" + 
+						"													</tbody>\r\n" + 
+						"													</table>\r\n" + 
+						"												</div>										\r\n" + 
+						"											</td>\r\n" + 
+						"										</tr>\r\n" + 
+						"										<tr> <td colspan=\"5\" height=\"40\"></td> </tr>\r\n" + 
+						"									</tbody>\r\n" + 
+						"								</table> <!-- End Icon articles -->						\r\n" + 
+						"								<!-- News article (2 columns) -->\r\n" + 
+						"								<table id=\"news__article\" class=\"device\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" bgcolor=\"#ffffff\" align=\"center\" style=\"width: 100%; padding: 0; margin: 0; background-color: #ffffff\">\r\n" + 
+						"									<tbody>\r\n" + 
+						"										<tr>\r\n" + 
+						"											<td width=\"90\" style=\"width: 9.3%;\"></td>\r\n" + 
+						"											<td align=\"center\">\r\n" + 
+						"												<div style=\"display: inline-block;\">\r\n" + 
+						"													<table class=\"news__art\" align=\"center\" cellpadding=\"5\" cellspacing=\"0\" border=\"0\" bgcolor=\"#ffffff\" style=\"padding: 0; margin: 0; mso-table-lspace:0pt; mso-table-rspace:0pt;\">\r\n" + 
+						"														<tbody>\r\n" + 
+						"															<tr>\r\n" + 
+						"																<td width=\"80\" style=\"width:10%;\"></td>\r\n" + 
+						"																<td colspan=\"2\" align=\"center\" width=\"300\">\r\n" + 
+						"																	<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; display: block; outline: none; text-decoration: none; line-height: 220px; height: 220px; color: #ffffff; font-family: Verdana, Geneva, sans-serif; -webkit-text-size-adjust:none;\">\r\n" + 
+						"																		<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/pic-1.png?raw=true\" alt=\"icon\" border=\"0\" width=\"300\" height=\"220\" style=\"border: none; display: block; outline: none; -ms-interpolation-mode: bicubic;\">\r\n" + 
+						"																	</a>\r\n" + 
+						"																</td>\r\n" + 
+						"																<td width=\"80\" style=\"width:10%;\"></td>\r\n" + 
+						"															</tr>\r\n" + 
+						"															<tr> <td colspan=\"4\" height=\"15\"></td> </tr>\r\n" + 
+						"															<tr>\r\n" + 
+						"																<td width=\"80\" style=\"width:10%;\"></td>\r\n" + 
+						"																<td align=\"left\">\r\n" + 
+						"																	<div border=\"0\" style=\"border: none; line-height: 22px; color: #212121; font-family: Verdana, Geneva, sans-serif; font-size: 16px;\">\r\n" + 
+						"																		Lorem Ipsum\r\n" + 
+						"																	</div>\r\n" + 
+						"																</td>\r\n" + 
+						"																<td align=\"right\">\r\n" + 
+						"																	<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; outline: none; text-decoration: none; line-height: 18px; font-size: 12px; color: #b7b7b7; font-family: Verdana, Geneva, sans-serif; -webkit-text-size-adjust:none;\">21 aug</a>\r\n" + 
+						"																	<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>\r\n" + 
+						"																	<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; outline: none; text-decoration: none; line-height: 18px; font-size: 12px; color: #b7b7b7; font-family: Verdana, Geneva, sans-serif; -webkit-text-size-adjust:none;\">Author</a>\r\n" + 
+						"																</td>\r\n" + 
+						"																<td width=\"80\" style=\"width:10%;\"></td>\r\n" + 
+						"															</tr>\r\n" + 
+						"															\r\n" + 
+						"															<tr>\r\n" + 
+						"																<td width=\"80\" style=\"width:10%;\"></td>\r\n" + 
+						"																<td colspan=\"2\" width=\"300\">\r\n" + 
+						"																	<div border=\"0\" style=\"border: none; line-height: 18px; color: #727272; font-family: Verdana, Geneva, sans-serif; font-size: 13px;\">\r\n" + 
+						"																		This is Photoshop's version  of Lorem Ipsum. Proin <a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; outline: none; line-height: 18px; font-size: 13px; color: #31796e; font-family: Verdana, Geneva, sans-serif; -webkit-text-size-adjust:none;\">more ... </a>\r\n" + 
+						"																	</div>\r\n" + 
+						"																</td>\r\n" + 
+						"																<td width=\"80\" style=\"width:10%;\"></td>\r\n" + 
+						"															</tr>\r\n" + 
+						"															<tr> <td colspan=\"4\" height=\"40\"></td> </tr>\r\n" + 
+						"														</tbody>\r\n" + 
+						"													</table>\r\n" + 
+						"												</div>\r\n" + 
+						"\r\n" + 
+						"												<div style=\"display: inline-block;\">\r\n" + 
+						"													<table class=\"news__art\" align=\"center\" cellpadding=\"5\" cellspacing=\"0\" border=\"0\" bgcolor=\"#ffffff\" style=\"padding: 0; margin: 0; mso-table-lspace:0pt; mso-table-rspace:0pt; \">\r\n" + 
+						"														<tbody>\r\n" + 
+						"															<tr>\r\n" + 
+						"																<td width=\"80\" style=\"width:10%;\"></td>\r\n" + 
+						"																<td colspan=\"2\" align=\"center\" width=\"300\">\r\n" + 
+						"																	<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; display: block; outline: none; text-decoration: none; line-height: 220px; height: 220px; color: #ffffff; font-family: Verdana, Geneva, sans-serif; -webkit-text-size-adjust:none;\">\r\n" + 
+						"																		<img src=\"https://github.com/lime7/responsive-html-template/blob/master/index/pic-2.png?raw=true\" alt=\"icon\" border=\"0\" width=\"300\" height=\"220\" style=\"border: none; display: block; outline: none; -ms-interpolation-mode: bicubic;\">\r\n" + 
+						"																	</a>\r\n" + 
+						"																</td>\r\n" + 
+						"																<td width=\"80\" style=\"width:10%;\"></td>\r\n" + 
+						"															</tr>\r\n" + 
+						"															<tr> <td colspan=\"4\" height=\"15\"></td> </tr>\r\n" + 
+						"															<tr>\r\n" + 
+						"																<td width=\"80\" style=\"width:10%;\"></td>\r\n" + 
+						"																<td align=\"left\">\r\n" + 
+						"																	<div border=\"0\" style=\"border: none; line-height: 22px; color: #212121; font-family: Verdana, Geneva, sans-serif; font-size: 16px;\">\r\n" + 
+						"																		Lorem Ipsum\r\n" + 
+						"																	</div>\r\n" + 
+						"																</td>\r\n" + 
+						"																<td align=\"right\">\r\n" + 
+						"																	<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; outline: none; text-decoration: none; line-height: 18px; font-size: 12px; color: #b7b7b7; font-family: Verdana, Geneva, sans-serif; -webkit-text-size-adjust:none;\">21 aug</a>\r\n" + 
+						"																	<span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>\r\n" + 
+						"																	<a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; outline: none; text-decoration: none; line-height: 18px; font-size: 12px; color: #b7b7b7; font-family: Verdana, Geneva, sans-serif; -webkit-text-size-adjust:none;\">Author</a>\r\n" + 
+						"																</td>\r\n" + 
+						"																<td width=\"80\" style=\"width:10%;\"></td>\r\n" + 
+						"															</tr>\r\n" + 
+						"															\r\n" + 
+						"															<tr>\r\n" + 
+						"																<td width=\"80\" style=\"width:10%;\"></td>\r\n" + 
+						"																<td colspan=\"2\" width=\"300\">\r\n" + 
+						"																	<div border=\"0\" style=\"border: none; line-height: 18px; color: #727272; font-family: Verdana, Geneva, sans-serif; font-size: 13px;\">\r\n" + 
+						"																		This is Photoshop's version  of Lorem Ipsum. Proin <a href=\"#\" target=\"_blank\" border=\"0\" style=\"border: none; outline: none; line-height: 18px; font-size: 13px; color: #31796e; font-family: Verdana, Geneva, sans-serif; -webkit-text-size-adjust:none;\">more ... </a>\r\n" + 
+						"																	</div>\r\n" + 
+						"																</td>\r\n" + 
+						"																<td width=\"80\" style=\"width:10%;\"></td>\r\n" + 
+						"															</tr>\r\n" + 
+						"															<tr> <td colspan=\"4\" height=\"40\"></td> </tr>\r\n" + 
+						"														</tbody>\r\n" + 
+						"													</table>\r\n" + 
+						"												</div>\r\n" + 
+						"											</td>\r\n" + 
+						"											<td width=\"90\" style=\"width: 9.3%;\"></td>\r\n" + 
+						"										</tr>\r\n" + 
+						"									</tbody>\r\n" + 
+						"								</table> <!-- End News article -->						\r\n" + 
+						"								<!-- One art (2 columns) -->\r\n" + 
+						"								<table id=\"one__art\" class=\"device\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" bgcolor=\"#ffffff\" align=\"center\" style=\"width: 100%; padding: 0; margin: 0; background-image: url(https://github.com/lime7/responsive-html-template/blob/master/index/one__bg.png?raw=true); background-size: 100% 100%; background-position: center center; background-repeat: no-repeat; background-color: #ECECED;\">\r\n" + 
+						"									<tbody>\r\n" + 
+						"										<tr>											\r\n" + 
+						"											<td align=\"center\">\r\n" + 
+						"												<table align=\"right\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" bgcolor=\"#ffffff\" style=\"padding: 0; margin: 0; background-image: url(ohttps://github.com/lime7/responsive-html-template/blob/master/index/one__art-mask.png?raw=true); background-size: 100% 100%; background-position: center center; background-repeat: no-repeat; background-color: rgba(255,255,255,.85); max-width: 480px; width:100%;\">\r\n" + 
+						"													<tbody>\r\n" + 
+						"														<tr><td colspan=\"3\" height=\"15\"></td></tr>\r\n" + 
+						"														<tr>\r\n" + 
+						"															<td width=\"20\" style=\"width:4%;\"></td>\r\n" + 
+						"															<td align=\"left\">\r\n" + 
+						"																<div border=\"0\" style=\"border: none; line-height: 18px; color: #212121; font-family: Verdana, Geneva, sans-serif; font-size: 20px;\">\r\n" + 
+						"																	Lorem Ipsum\r\n" + 
+						"																</div>\r\n" + 
+						"															</td>\r\n" + 
+						"															<td width=\"20\" style=\"width:4%;\"></td>\r\n" + 
+						"														</tr>\r\n" + 
+						"														<tr>\r\n" + 
+						"															<td width=\"20\" style=\"width:4%;\"></td>\r\n" + 
+						"															<td align=\"left\">\r\n" + 
+						"																<div border=\"0\" style=\"border: none;\">\r\n" + 
+						"																	<p style=\"line-height: 22px; color: #727272; font-family: Verdana, Geneva, sans-serif; font-size: 16px; text-align: left; mso-table-lspace:0;mso-table-rspace:0;\">\r\n" + 
+						"																		This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. \r\n" + 
+						"																	</p>\r\n" + 
+						"																</div>\r\n" + 
+						"															</td>\r\n" + 
+						"															<td width=\"20\" style=\"width:4%;\"></td>\r\n" + 
+						"														</tr>\r\n" + 
+						"														<tr>\r\n" + 
+						"															<td width=\"20\" style=\"width:4%;\"></td>\r\n" + 
+						"															<td align=\"left\" height=\"34\">\r\n" + 
+						"																<div style=\"background-image: url(https://github.com/lime7/responsive-html-template/blob/master/index/one__art-btn.png?raw=true); background-size: 100% 100%; background-position: center center; width: 125px;\">\r\n" + 
+						"																	<a href=\"#\" target=\"_blank\" width=\"90\" height=\"34\" align=\"center\" bgcolor=\"#9de0dc\" border=\"0\" style=\"border: none; outline: none; display: block; height: 34px; text-decoration: none; font-size: 16px; line-height: 34px; color: #ffffff; font-family: Verdana, Geneva, sans-serif; text-align: center;  -webkit-text-size-adjust:none; background-color:#9de0dc; margin: 0 auto; width: 90px;\">\r\n" + 
+						"																		view more\r\n" + 
+						"																	</a>\r\n" + 
+						"																</div>\r\n" + 
+						"															</td>\r\n" + 
+						"															<td width=\"20\" style=\"width:4%;\"></td>\r\n" + 
+						"														</tr>\r\n" + 
+						"														<tr><td colspan=\"3\" height=\"13\"></td></tr>\r\n" + 
+						"													</tbody>\r\n" + 
+						"												</table>\r\n" + 
+						"											</td>\r\n" + 
+						"										</tr>\r\n" + 
+						"									</tbody>\r\n" + 
+						"								</table> <!-- End One art -->\r\n" + 
+						"								<!-- Footer -->\r\n" + 
+						"								<table id=\"news__article\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" bgcolor=\"#ffffff\" align=\"center\" style=\"width: 100%; padding: 0; margin: 0; background-color: #ffffff\">\r\n" + 
+						"									<tbody>\r\n" + 
+						"										<tr><td colspan=\"3\" height=\"23\"></td></tr>\r\n" + 
+						"										<tr>\r\n" + 
+						"											<td align=\"center\">\r\n" + 
+						"												<div border=\"0\" style=\"border: none; line-height: 14px; color: #727272; font-family: Verdana, Geneva, sans-serif; font-size: 16px;\">\r\n" + 
+						"													2015 © <a href=\"https://semenchenkov.github.io/\" target=\"_blank\" border=\"0\" style=\"border: none; outline: none; text-decoration: none; line-height: 14px; font-size: 16px; color: #727272; font-family: Verdana, Geneva, sans-serif; -webkit-text-size-adjust:none;\">Semenchenko V. Helen</a>\r\n" + 
+						"												</div>\r\n" + 
+						"											</td>\r\n" + 
+						"										</tr>\r\n" + 
+						"										<tr><td colspan=\"3\" height=\"23\"></td></tr>\r\n" + 
+						"									</tbody>\r\n" + 
+						"								</table> <!-- End Footer -->\r\n" + 
+						"							</td>\r\n" + 
+						"						</tr>\r\n" + 
+						"					</tbody>\r\n" + 
+						"				</table>\r\n" + 
+						"			</div> <!-- End Old wrap -->\r\n" + 
+						"		</center> <!-- End Wrapper -->\r\n" + 
+						"	</div> <!-- End Mail.ru Wrapper -->\r\n" + 
+						"</body>\r\n" + 
+						"\r\n" + 
+						"</html>";
+				send(gmail_user,gmail_password,TO,gmail_subject, gmail_message);
+				
 			} else if (c == 1) {
 				JOptionPane.showMessageDialog(null, txuser.getText() + " already exists.Try other username",
 						"Incorrect Username", JOptionPane.ERROR_MESSAGE);
@@ -660,5 +1097,69 @@ public class PatientID1 extends JDialog
 	public void changedUpdate(DocumentEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void send(String from, String password, String to, String sub, String msg) {
+		// Get properties object
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.socketFactory.port", "465");
+		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.port", "465");
+		// get Session
+		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(from, password);
+			}
+		});
+		// compose message
+		try {    
+        	// Create a default MimeMessage object.
+  			Message message = new MimeMessage(session);
+  			
+  	        // Set From: header field of the header.
+  	        message.setFrom(new InternetAddress(from));
+  	        
+  	        
+  			// message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+  			// Set To: header field of the header.
+  			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(to));
+  			
+  			// Set Subject: header field
+  			message.setSubject(sub);
+
+  	         // Create the message part
+  	         BodyPart messageBodyPart = new MimeBodyPart();
+  	         // Now set the actual message
+  	         messageBodyPart.setContent(msg, "text/html");
+
+  	         // Creating the image part
+  	         BodyPart imageBodyPart = new MimeBodyPart();
+  	         String filename = "F:\\Eclipse\\Projects\\Doctor-Appointment\\bin\\attach.png";
+  	         DataSource source = new FileDataSource(filename);
+  	         imageBodyPart.setDataHandler(new DataHandler(source));
+  	         imageBodyPart.setFileName("Prior Health");
+  	         imageBodyPart.setHeader("Health", "<image>");
+  	        		
+  	         // Create a multiple parts
+  	         Multipart multipart = new MimeMultipart();
+
+  	         // Set message part
+  	         multipart.addBodyPart(messageBodyPart);
+  	         // Set image part
+  	         multipart.addBodyPart(imageBodyPart);
+
+  	         
+  	         // Send the complete message parts
+  	         message.setContent(multipart);
+
+  	         
+  			// send message
+  			Transport.send(message);
+  			System.out.println("Mail sent successfully");
+  		} catch (MessagingException e) {
+  			throw new RuntimeException(e);
+  		}
 	}
 }

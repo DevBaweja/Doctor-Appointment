@@ -12,6 +12,7 @@ public class DemoMain extends JApplet{
 		jtp = new JTabbedPane();
 		jtp.setBackground(Color.blue);
 		setSize(new Dimension(1000,800));
+		setSize(1000, 800);
 		setPreferredSize(new Dimension(1000, 800));
 		
 	//  jtp.addTab("Login", new MainImagesCLO());

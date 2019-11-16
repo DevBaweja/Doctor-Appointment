@@ -1,7 +1,9 @@
 import java.util.Calendar;
 
 public class Mainnnn {
-  public static void main(String[] args) {
+  // public static void main(String[] args)
+	public Mainnnn()
+	{
     Calendar now = Calendar.getInstance();
     System.out.println("Current date : " + (now.get(Calendar.MONTH) + 1) + "-"
         + now.get(Calendar.DATE) + "-" + now.get(Calendar.YEAR));
