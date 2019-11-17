@@ -13,14 +13,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class MainImagesCLO extends JPanel implements ActionListener{
+class MainImagesCLO extends JPanel implements ActionListener{
 
-		JPanel p1,pmain;
-		JButton bnext,bprev;
-		CardLayout clo;
+		private JPanel p1;
+	private JPanel pmain;
+		private JButton bnext;
+	private JButton bprev;
+		private CardLayout clo;
 		
-		JLabel lb1,lb2,lb3;
-		JPanel Pimage1,Pimage2,Pimage3;
+		private JLabel lb1;
+	JLabel lb2;
+	private JLabel lb3;
+		private JPanel Pimage1;
+	private JPanel Pimage2;
+	private JPanel Pimage3;
 		
 		
 		public MainImagesCLO()

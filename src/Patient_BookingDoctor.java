@@ -35,24 +35,43 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-public class Patient_BookingDoctor extends JDialog implements ActionListener,ItemListener{
+class Patient_BookingDoctor extends JDialog implements ActionListener,ItemListener{
 
 	// This is JDialog 
 	// Called by Patient_Viewdoctorinfo(); // also dispose it
 	
-	JLabel lbdoc,lbpat,lbslot,lbdate,lbday;
-	JTextField txdoctor,txpatient;
-	JComboBox chyy,chmm,chdd,chday;
-	JRadioButton chmslot,cheslot;
-	ButtonGroup time;
-	JComboBox cbms,cbme,cbes,cbee;
-	JPanel p1,pslot,P,Pdob;
-	JPanel pbtn;
-	JButton btbook,btcancel;
-	String userp;
-	String userd; 
-	String mstart,mend,estart,eend;
-	int f;
+	private JLabel lbdoc;
+	private JLabel lbpat;
+	private JLabel lbslot;
+	private JLabel lbdate;
+	private JLabel lbday;
+	private JTextField txdoctor;
+	private JTextField txpatient;
+	private JComboBox chyy;
+	private JComboBox chmm;
+	private JComboBox chdd;
+	private JComboBox chday;
+	private JRadioButton chmslot;
+	private JRadioButton cheslot;
+	private ButtonGroup time;
+	private JComboBox cbms;
+	private JComboBox cbme;
+	private JComboBox cbes;
+	private JComboBox cbee;
+	private JPanel p1;
+	private JPanel pslot;
+	JPanel P;
+	private JPanel Pdob;
+	private JPanel pbtn;
+	private JButton btbook;
+	private JButton btcancel;
+	private String userp;
+	private String userd;
+	private String mstart;
+	private String mend;
+	private String estart;
+	private String eend;
+	private int f;
 
 	public Patient_BookingDoctor()
 	{
@@ -179,7 +198,7 @@ public class Patient_BookingDoctor extends JDialog implements ActionListener,Ite
 			
 
 		}
-	public void filldays()
+	private void filldays()
 	{
 		try {
 			
@@ -217,7 +236,7 @@ public class Patient_BookingDoctor extends JDialog implements ActionListener,Ite
 	}
 		
 	}
-	public void fillmslottime()
+	private void fillmslottime()
 	{
 	try {
 				
@@ -254,7 +273,7 @@ public class Patient_BookingDoctor extends JDialog implements ActionListener,Ite
 	}
 	
 	
-	public void fillmslottimeinterval()
+	private void fillmslottimeinterval()
 	{
 		cbms.removeAllItems();
 		cbme.removeAllItems();
@@ -293,7 +312,7 @@ public class Patient_BookingDoctor extends JDialog implements ActionListener,Ite
 	
 	}
 	
-	public void filleslottime()
+	private void filleslottime()
 	{
 		try {
 			
@@ -330,7 +349,7 @@ public class Patient_BookingDoctor extends JDialog implements ActionListener,Ite
 	}	
 	}
 	
-	public void filleslottimeinterval()
+	private void filleslottimeinterval()
 	{
 		cbes.removeAllItems();
 		cbee.removeAllItems();
@@ -362,12 +381,12 @@ public class Patient_BookingDoctor extends JDialog implements ActionListener,Ite
 		cbee.addItem(cbes.getItemAt(1).toString());
 	}
 	
-		public void enablemorning(boolean status)
+		private void enablemorning(boolean status)
 		{
 			cbms.setVisible(status);
 			cbme.setVisible(status);
 		}
-		public void enableevening(boolean status)
+		private void enableevening(boolean status)
 		{
 			cbes.setVisible(status);
 			cbee.setVisible(status);
@@ -375,7 +394,7 @@ public class Patient_BookingDoctor extends JDialog implements ActionListener,Ite
 		
 		
 		
-		public void style()
+		private void style()
 		{
 
 			Color c1= new Color(20,110,140);
@@ -436,7 +455,7 @@ public class Patient_BookingDoctor extends JDialog implements ActionListener,Ite
 					}
 		}
 		
-		public void bookdoctor()
+		private void bookdoctor()
 		{
 		
 			 try {
@@ -625,7 +644,7 @@ public class Patient_BookingDoctor extends JDialog implements ActionListener,Ite
 		
 		// final rating will be from that all rating
 		// final appointment is from frequency
-		public void updatefinaltable()
+		private void updatefinaltable()
 		{
 			try {
 				Class.forName("com.mysql.jdbc.Driver");

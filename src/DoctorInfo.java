@@ -33,25 +33,59 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-public class DoctorInfo extends JPanel implements ActionListener,ItemListener,FocusListener,KeyListener{
-                JPanel p,phead,pbutton;
-                JButton btedit,btsubmit;
-                JTextField txuser;
-                JTextArea taddress;
-                JTextField txmobile;
-                JTextField txemail,txlocation;
-                JComboBox cbcity,cbstate;
-                JComboBox chspecilization,chqualification;
-                JTextField txHospitalName,txHospitalLocation,txclinicname,txcliniclocation;
-                JPanel Pgender,Pdob,PLang;
-                JRadioButton ckmale,ckfemale,ckhidden;
-                JCheckBox chenglish,chhindi,chothers,chlanghidden;
-                ButtonGroup gr;
-                JComboBox chyy,chmm,chdd;
-                JComboBox cMs;
-                String trial;
-                JLabel lbuser,lbemail,lbmobile,lbgender,lbstatus,lbdob,lblocation,lbaddress,lbstate,lbcity,lbspeci,lbqualification,lblang,lbhosn,lbhosl,lbclin,lbclinl;
-                String userd;
+class DoctorInfo extends JPanel implements ActionListener,ItemListener,FocusListener,KeyListener{
+                private JPanel p;
+    JPanel phead;
+    private JPanel pbutton;
+                private JButton btedit;
+    private JButton btsubmit;
+                private JTextField txuser;
+                private JTextArea taddress;
+                private JTextField txmobile;
+                private JTextField txemail;
+    private JTextField txlocation;
+                private JComboBox cbcity;
+    private JComboBox cbstate;
+                private JComboBox chspecilization;
+    private JComboBox chqualification;
+                private JTextField txHospitalName;
+    private JTextField txHospitalLocation;
+    private JTextField txclinicname;
+    private JTextField txcliniclocation;
+                private JPanel Pgender;
+    private JPanel Pdob;
+    private JPanel PLang;
+                private JRadioButton ckmale;
+    private JRadioButton ckfemale;
+    private JRadioButton ckhidden;
+                private JCheckBox chenglish;
+    private JCheckBox chhindi;
+    private JCheckBox chothers;
+    JCheckBox chlanghidden;
+                private ButtonGroup gr;
+                private JComboBox chyy;
+    private JComboBox chmm;
+    private JComboBox chdd;
+                private JComboBox cMs;
+                private String trial;
+                private JLabel lbuser;
+    private JLabel lbemail;
+    private JLabel lbmobile;
+    private JLabel lbgender;
+    private JLabel lbstatus;
+    private JLabel lbdob;
+    private JLabel lblocation;
+    private JLabel lbaddress;
+    private JLabel lbstate;
+    private JLabel lbcity;
+    private JLabel lbspeci;
+    private JLabel lbqualification;
+    private JLabel lblang;
+    private JLabel lbhosn;
+    private JLabel lbhosl;
+    private JLabel lbclin;
+    private JLabel lbclinl;
+                private String userd;
                 
                 public DoctorInfo()
                 {
@@ -149,7 +183,7 @@ public class DoctorInfo extends JPanel implements ActionListener,ItemListener,Fo
 
                 }
                 
-                public void fillspec()
+                private void fillspec()
                 {
 
                     
@@ -184,7 +218,7 @@ public class DoctorInfo extends JPanel implements ActionListener,ItemListener,Fo
               	  
                 }
                 
-                public void fillqual()
+                private void fillqual()
                 {
 
 
@@ -217,7 +251,7 @@ public class DoctorInfo extends JPanel implements ActionListener,ItemListener,Fo
             				}
                 }
                 
-            	public void fillcbstate()
+            	private void fillcbstate()
             	{
             		try {
             			Class.forName("com.mysql.jdbc.Driver");
@@ -243,7 +277,7 @@ public class DoctorInfo extends JPanel implements ActionListener,ItemListener,Fo
             			ae.printStackTrace();
             		}
             	}
-                public void fillform()
+                private void fillform()
                 {
                                 try {
 
@@ -341,7 +375,7 @@ public class DoctorInfo extends JPanel implements ActionListener,ItemListener,Fo
 
                 }
 
-                public void print()
+                private void print()
                 {
 
                                 chyy.addItem("Year");
@@ -536,7 +570,7 @@ public class DoctorInfo extends JPanel implements ActionListener,ItemListener,Fo
                                 }
 
                 }
-                public void updateform()
+                private void updateform()
                 {
                   	if( txuser.getText().equals("") 
                   			  || txemail.getText().equals("") 
@@ -706,7 +740,7 @@ public class DoctorInfo extends JPanel implements ActionListener,ItemListener,Fo
                                 txmobile.setEnabled(status);
                 }
                 
-                public void style()
+                private void style()
 
                 {
                 

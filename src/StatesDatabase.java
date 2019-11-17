@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class StatesDatabase {
+class StatesDatabase {
 
 	// Make it main in case of creating states database
 	public StatesDatabase() 

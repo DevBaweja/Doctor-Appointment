@@ -26,13 +26,14 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.text.TableView.TableRow;
 
-public class AdminShowAllPatient extends JPanel {
+class AdminShowAllPatient extends JPanel {
 
-	JTable tb; 
-	JScrollPane jsp;
-	JPanel P,Ps;
+	private JTable tb;
+	private JScrollPane jsp;
+	private JPanel P;
+	private JPanel Ps;
 	
-	int c= 0;
+	private int c= 0;
 	
 	public AdminShowAllPatient() {
 		
@@ -171,7 +172,7 @@ public class AdminShowAllPatient extends JPanel {
 		add(P,BorderLayout.CENTER);
 		Ps.setLayout(new GridLayout(2,1));
 		JLabel lb1,lb2;
-		lb1 = new JLabel("         :: Here 1001100100 stands for Diabetes,High Blood Pressure,Respiratory Diseases,Heart Diseases,Digestive Diseases,High Cholesterol ,Stroke,Cancer,Alzheimer’s disease ::");
+		lb1 = new JLabel("         :: Here 1001100100 stands for Diabetes,High Blood Pressure,Respiratory Diseases,Heart Diseases,Digestive Diseases,High Cholesterol ,Stroke,Cancer,Alzheimerï¿½s disease ::");
 		lb2 = new JLabel("         :: 0 for Disease Absence And 1 for Disease Presence ::");
 		
 		Ps.add(lb1);
@@ -180,7 +181,7 @@ public class AdminShowAllPatient extends JPanel {
 		style();
 		validate();
 	}
-	public void style()
+	private void style()
 	{
 	     Font f  = new Font("comic sans",Font.ITALIC+Font.BOLD , 40); 
 	        Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);

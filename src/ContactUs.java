@@ -12,10 +12,15 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-public class ContactUs extends JPanel{
+class ContactUs extends JPanel{
 
-                JPanel p1,p2,p3;
-                JLabel lbimg,lbaddress,lbemail,lbcontact;
+                private JPanel p1;
+    private JPanel p2;
+    private JPanel p3;
+                private JLabel lbimg;
+    private JLabel lbaddress;
+    private JLabel lbemail;
+    private JLabel lbcontact;
                 public ContactUs()
                 {
                 	setVisible(true);
@@ -46,7 +51,7 @@ public class ContactUs extends JPanel{
                 }
                                 
                 
-                public void style()
+                private void style()
                                 {
                                 
                                                 Color c1= new Color(20,110,140);

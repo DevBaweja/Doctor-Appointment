@@ -13,8 +13,8 @@ import javax.swing.JPanel;
 
 public class FeedBackStars extends JApplet implements ActionListener{
 
-	JButton bt[] ;
-	JPanel p;
+	private JButton[] bt;
+	private JPanel p;
 	public void init()
 	{
 		setVisible(true);

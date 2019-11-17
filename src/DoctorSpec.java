@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JPanel;
 
-public class DoctorSpec extends JPanel{
+class DoctorSpec extends JPanel{
 
 	// this should not run again 
 	public DoctorSpec()

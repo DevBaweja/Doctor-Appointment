@@ -31,19 +31,29 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-public class Doctor_Manageschedule extends JPanel implements ItemListener,ActionListener{
+class Doctor_Manageschedule extends JPanel implements ItemListener,ActionListener{
  
 	
-	String userd;
-	JCheckBox ch[];
-	JButton btupdate,btedit;
-	JPanel P;
-	JPanel Pmain;
-	String k="";
-	JComboBox cbms,cbme,cbes,cbee;
-	JLabel lbms,lbme,lbes,lbee;
-	JLabel lbset;
-	JPanel pset,pm,pe,pbtn;
+	private String userd;
+	private JCheckBox[] ch;
+	private JButton btupdate;
+	private JButton btedit;
+	private JPanel P;
+	private JPanel Pmain;
+	private String k="";
+	private JComboBox cbms;
+	private JComboBox cbme;
+	private JComboBox cbes;
+	private JComboBox cbee;
+	private JLabel lbms;
+	private JLabel lbme;
+	private JLabel lbes;
+	private JLabel lbee;
+	private JLabel lbset;
+	private JPanel pset;
+	private JPanel pm;
+	private JPanel pe;
+	private JPanel pbtn;
 	// ms morning start
 	// me morning end
 	// es evening start
@@ -253,7 +263,7 @@ public class Doctor_Manageschedule extends JPanel implements ItemListener,Action
 				}
 	}
 	
-	public void updateform()
+	private void updateform()
 	{
 		try {
 			
@@ -287,7 +297,7 @@ public class Doctor_Manageschedule extends JPanel implements ItemListener,Action
 	}
 	
 	
-	public void fillform()
+	private void fillform()
 	{
 		try {
 			
@@ -329,7 +339,7 @@ public class Doctor_Manageschedule extends JPanel implements ItemListener,Action
 		}
 	}
 	
-	public void style()
+	private void style()
 	{
 		Color c1= new Color(20,110,140);
 		   Font f2  = new Font("comic sans",Font.ITALIC+Font.BOLD , 40);	   

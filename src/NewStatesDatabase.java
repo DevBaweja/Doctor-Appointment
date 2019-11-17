@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 
-public class NewStatesDatabase {
+class NewStatesDatabase {
 
 	public NewStatesDatabase() {
 		// TODO Auto-generated constructor stub

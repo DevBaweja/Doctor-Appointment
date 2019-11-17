@@ -19,13 +19,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-public class DoctorTabbedBar extends JDialog implements ActionListener{
+class DoctorTabbedBar extends JDialog implements ActionListener{
 
 	// This is JFrame called in DoctorLoginHome // see logout also dispose
-                public static JTabbedPane Jtp;
-                int c;
-                JPanel logout;
-                JButton btlogout;
+                private static JTabbedPane Jtp;
+                private int c;
+                private JPanel logout;
+                private JButton btlogout;
                 static String userd;
                 
                 public DoctorTabbedBar()
@@ -75,7 +75,7 @@ public class DoctorTabbedBar extends JDialog implements ActionListener{
               
                 }
                 
-           public boolean checkschedule()
+           private boolean checkschedule()
              {
             	 try {
      				
@@ -110,7 +110,7 @@ public class DoctorTabbedBar extends JDialog implements ActionListener{
   				// it will open home in case exceptional c > 1 which is not possible as it will be executed once
              }
            
-           public void userlogout()
+           private void userlogout()
            {
 	           	logout = new JPanel();
 	           	btlogout = new JButton("Log out");

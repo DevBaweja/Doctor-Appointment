@@ -32,17 +32,18 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.text.TableView.TableRow;
 
-public class TodayDate extends JPanel implements ActionListener {
+class TodayDate extends JPanel implements ActionListener {
 
 
-	String userd;
-	int c= 0;
-	JPanel P;
-	JTable tb;
-	JScrollPane jsp;
-	JPanel Pbtn;
-	JButton bttoday,btall;
-	boolean condition ;
+	private String userd;
+	private int c= 0;
+	private JPanel P;
+	private JTable tb;
+	private JScrollPane jsp;
+	private JPanel Pbtn;
+	private JButton bttoday;
+	private JButton btall;
+	private boolean condition ;
 	
 	public TodayDate() {
 		
@@ -204,7 +205,7 @@ public class TodayDate extends JPanel implements ActionListener {
 		style();
 		validate();
 	}
-	public void style()
+	private void style()
 	{
 	     Font f  = new Font("comic sans",Font.ITALIC+Font.BOLD , 40); 
 	        Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);

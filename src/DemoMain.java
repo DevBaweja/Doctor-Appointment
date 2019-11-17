@@ -6,7 +6,7 @@ import javax.swing.JTabbedPane;
 
 public class DemoMain extends JApplet{
 
-	JTabbedPane jtp;
+	private JTabbedPane jtp;
 	public void init()
 	{
 		jtp = new JTabbedPane();
@@ -26,7 +26,7 @@ public class DemoMain extends JApplet{
 		add(jtp);
 	}
 	
-	public void style()
+	private void style()
 	{
 		 jtp.setBackground(Color.black);
 		 jtp.setForeground(Color.white);

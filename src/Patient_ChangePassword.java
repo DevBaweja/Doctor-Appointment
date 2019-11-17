@@ -23,14 +23,20 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-public class Patient_ChangePassword extends JPanel implements ActionListener{
+class Patient_ChangePassword extends JPanel implements ActionListener{
                 
-                JLabel lbuser,lboldpass,lbnewpass,lbconfpass;
-                JTextField txuser;
-                JPasswordField txoldpss,txnewpass,txconfpass;
-                JPanel P;
-                JButton btsubmit,btrefresh;
-                String userp;
+                private JLabel lbuser;
+    private JLabel lboldpass;
+    private JLabel lbnewpass;
+    private JLabel lbconfpass;
+                private JTextField txuser;
+                private JPasswordField txoldpss;
+    private JPasswordField txnewpass;
+    private JPasswordField txconfpass;
+                private JPanel P;
+                private JButton btsubmit;
+    private JButton btrefresh;
+                private String userp;
                 public Patient_ChangePassword() 
                 {
                 				 userp = PatientTabbedBar.userp;
@@ -80,7 +86,7 @@ public class Patient_ChangePassword extends JPanel implements ActionListener{
                                 style();
                                 
                 }
-                public void style()
+                private void style()
 
                 {
                 
@@ -143,7 +149,7 @@ public class Patient_ChangePassword extends JPanel implements ActionListener{
                 	}
                                 
                 }
-                public void checkpass()
+                private void checkpass()
                 {
                 	 try {
      					

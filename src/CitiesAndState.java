@@ -17,8 +17,9 @@ import javax.swing.JTextField;
 
 public class CitiesAndState extends JApplet implements ItemListener{
 
-	JComboBox cbstate,cbcities;
-	JTextField tx;
+	private JComboBox cbstate;
+	private JComboBox cbcities;
+	private JTextField tx;
 	
 	public void init()
 	{
@@ -86,7 +87,7 @@ public class CitiesAndState extends JApplet implements ItemListener{
 		}
 	}
 
-	public void fillIndex() {
+	private void fillIndex() {
 		// TODO Auto-generated method stub
 		String c = cbcities.getSelectedItem().toString();
 		try {
@@ -117,7 +118,7 @@ public class CitiesAndState extends JApplet implements ItemListener{
 		}
 	}
 
-	public void fillCities() {
+	private void fillCities() {
 		// TODO Auto-generated method stub
 			String s = cbstate.getSelectedItem().toString();
 				try {

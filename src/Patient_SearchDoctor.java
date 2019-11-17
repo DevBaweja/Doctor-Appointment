@@ -34,31 +34,38 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.text.TableView.TableRow;
 
-public class Patient_SearchDoctor extends JPanel implements ItemListener,ActionListener{
+class Patient_SearchDoctor extends JPanel implements ItemListener,ActionListener{
 
-                JLabel lbstate,lbcity,lbspec,lbhos;
-                JComboBox cbcity,cbstate;
-                JComboBox chhospital;
-                JComboBox chspecilization;
-                JButton btsearch,btchoose;
-                JPanel Pfield,P1;
+                private JLabel lbstate;
+	private JLabel lbcity;
+	private JLabel lbspec;
+	private JLabel lbhos;
+                private JComboBox cbcity;
+	private JComboBox cbstate;
+                private JComboBox chhospital;
+                private JComboBox chspecilization;
+                private JButton btsearch;
+	private JButton btchoose;
+                private JPanel Pfield;
+	private JPanel P1;
                 
-            	JTable tb; 
-            	JScrollPane jsp;
+            	private JTable tb;
+            	private JScrollPane jsp;
             	JPanel Ps;
-            	int jspvis = 0; 
-            	int c= 0;
-            	Object [][]row;
+            	private int jspvis = 0;
+            	private int c= 0;
+            	private Object [][]row;
             	
-            	String condition ="";
+            	private String condition ="";
             	
                 
                 public static String userd;
-                String userp;
-                ResultSet rs1;
+                private String userp;
+                private ResultSet rs1;
                 int k,p;
-               float finalrate;
-               int finalappoint,finalpatient;
+               private float finalrate;
+               private int finalappoint;
+	private int finalpatient;
                 // used for booking doctor
                               
                 public Patient_SearchDoctor()
@@ -133,7 +140,7 @@ public class Patient_SearchDoctor extends JPanel implements ItemListener,ActionL
                                 style();
                 }
                                
-                public void fillcbstate()
+                private void fillcbstate()
             	{
             		try {
             			Class.forName("com.mysql.jdbc.Driver");
@@ -159,7 +166,7 @@ public class Patient_SearchDoctor extends JPanel implements ItemListener,ActionL
             			ae.printStackTrace();
             		}
             	}
-                public void fillcbcity()
+                private void fillcbcity()
                 {
                 	
         			cbcity.removeAllItems();
@@ -197,7 +204,7 @@ public class Patient_SearchDoctor extends JPanel implements ItemListener,ActionL
         				ae.printStackTrace();
         			}
                 }
-                public void style()
+                private void style()
                 {
                 
                                 Color c1= new Color(20,110,140);
@@ -227,7 +234,7 @@ public class Patient_SearchDoctor extends JPanel implements ItemListener,ActionL
     	//tb.setForeground(c1);
     	
 }
-                public void tablestyle()
+                private void tablestyle()
                 {
                 	 Color c1= new Color(20,110,140);
                  	Font f1  = new Font(null,Font.BOLD ,20);
@@ -330,7 +337,7 @@ public class Patient_SearchDoctor extends JPanel implements ItemListener,ActionL
 					}
 				}
 
-				public void fillspec()
+				private void fillspec()
 				{
 					chspecilization.removeAllItems();
                   //  chspecilization.addItem("Select Specilization");
@@ -387,7 +394,7 @@ public class Patient_SearchDoctor extends JPanel implements ItemListener,ActionL
 					 	}
 					} 
 				
-					public void fillhosp()
+					private void fillhosp()
 					{
 						chhospital.removeAllItems();
 					//	chhospital.addItem("Select Hospital");
@@ -462,7 +469,7 @@ public class Patient_SearchDoctor extends JPanel implements ItemListener,ActionL
 					}
 				}
 				
-				public void bookdoctor()
+				private void bookdoctor()
 				{
 					try {
 						Class.forName("com.mysql.jdbc.Driver"); // imported external jar mysql JConnector
@@ -537,7 +544,7 @@ public class Patient_SearchDoctor extends JPanel implements ItemListener,ActionL
 				}	
 				
 				
-				public void filltable()
+				private void filltable()
 				{
 					Object []col = {"Doctor Name","Patient Under","Appointment Taken","Rating","Email","Location","Specilization","Hospital Name","Hospital Location"} ; 
 					try {
@@ -639,7 +646,7 @@ public class Patient_SearchDoctor extends JPanel implements ItemListener,ActionL
 		
 			
 				// all the entries are taken from main table
-			public float filldoctorrating(String doctor)
+				private float filldoctorrating(String doctor)
 			{
 try {
 					
@@ -687,7 +694,7 @@ try {
 					//return (-1);
 				return(finalrate);
 }
-			public int filldoctorfrequency(String doctor) throws SQLException
+			private int filldoctorfrequency(String doctor) throws SQLException
 			{// for all the doctors
 try {
 					
@@ -733,7 +740,7 @@ try {
 			}	
 				return(finalappoint);
 			}
-			public int filldoctorpatient(String doctor) throws SQLException
+			private int filldoctorpatient(String doctor) throws SQLException
 			{// for all the doctors
 try {
 					

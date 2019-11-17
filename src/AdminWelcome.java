@@ -1,22 +1,16 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
-
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JApplet;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 
-public class AdminWelcome extends JPanel {
+class AdminWelcome extends JPanel {
 
-                JPanel p1,p2,p3;
-                JLabel lbimg,lbwelcome,lbpic;
-                public AdminWelcome()
+                private JPanel p1,p2,p3;
+                private JLabel lbimg,lbwelcome,lbpic;
+                AdminWelcome()
                 {
                                 lbimg=new JLabel(new ImageIcon("medical-appointment.jpg"));
                                 lbwelcome = new JLabel("Welcome to online Doctor Appointment, Admin");
@@ -35,7 +29,7 @@ public class AdminWelcome extends JPanel {
                                 
                                 style();
                 }
-                public void style()
+                private void style()
                 {
                                 Color c1= new Color(20,110,140);
         Font f1  = new Font("comic sans",Font.ITALIC+Font.BOLD , 20);

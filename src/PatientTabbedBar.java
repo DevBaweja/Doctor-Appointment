@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-public class PatientTabbedBar extends JFrame implements ActionListener{
+class PatientTabbedBar extends JFrame implements ActionListener{
 
 	// This is JFrame called in PatientLoginHome // see logout also dispose
-                JTabbedPane Jtp;
-                JPanel logout;
-                JButton btlogout;
+    private JTabbedPane Jtp;
+                private JPanel logout;
+                private JButton btlogout;
                 static String userp;
                 
                 public PatientTabbedBar()
@@ -45,7 +45,7 @@ public class PatientTabbedBar extends JFrame implements ActionListener{
                 Jtp.setBackgroundAt(4,Color.red);
                 add(Jtp);
                 }
-                public void userlogout()
+                private void userlogout()
                 {
                 	logout = new JPanel();
                 	btlogout = new JButton("Log out");

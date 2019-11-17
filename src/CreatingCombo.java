@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import javax.swing.JComboBox;
 
-public class CreatingCombo {
+class CreatingCombo {
 
     public static void fillcbstate(JComboBox<String> cbstate)
     {

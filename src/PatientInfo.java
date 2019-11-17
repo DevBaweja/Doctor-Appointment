@@ -1,67 +1,59 @@
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.JApplet;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
 
-public class PatientInfo extends JPanel implements ActionListener,ItemListener,FocusListener,KeyListener{
+class PatientInfo extends JPanel implements ActionListener,ItemListener,FocusListener,KeyListener{
 
-	JLabel lbuser,lbemail,lbmobile,lbgender,lbstatus,lbdob,lblocation,lbaddress,lbstate,lbcity,lbdisease,lbpast;
-	JTextField txuser;
-	JTextField txmobile,txpassrecords;
-	JTextArea taddress;
-	JTextField txemail,txlocation;
-	JComboBox cbstate,cbcity;
-	JPanel P,Phead,pbutton;   
-	JPanel Pgender,Pdob;
-	JButton btedit,btsubmit;
-	JRadioButton ckmale,ckfemale,ckhidden;
-	ButtonGroup gr;
-	JComboBox chyy,chmm,chdd;
-	JComboBox cMs;
-	JPanel Pdisease;
-	JPanel Pbut,Pclass ;
-	JPanel Pdis[];
-	JButton bnext,bprevious;
-	JCheckBox ch[];
-	CardLayout CLO;
-	String trial;
-	String userp;
+	private JLabel lbuser;
+	private JLabel lbemail;
+	private JLabel lbmobile;
+	private JLabel lbgender;
+	private JLabel lbstatus;
+	private JLabel lbdob;
+	private JLabel lblocation;
+	private JLabel lbaddress;
+	private JLabel lbstate;
+	private JLabel lbcity;
+	private JLabel lbdisease;
+	private JLabel lbpast;
+	private JTextField txuser;
+	private JTextField txmobile;
+	private JTextField txpassrecords;
+	private JTextArea taddress;
+	private JTextField txemail;
+	private JTextField txlocation;
+	private JComboBox cbstate;
+	private JComboBox cbcity;
+	private JPanel P;
+	private JPanel Phead;
+	private JPanel pbutton;
+	private JPanel Pgender;
+	private JPanel Pdob;
+	private JButton btedit;
+	private JButton btsubmit;
+	private JRadioButton ckmale;
+	private JRadioButton ckfemale;
+	private JRadioButton ckhidden;
+	private ButtonGroup gr;
+	private JComboBox chyy;
+	private JComboBox chmm;
+	private JComboBox chdd;
+	private JComboBox cMs;
+	private JPanel Pdisease;
+	private JPanel Pbut;
+	private JPanel Pclass ;
+	private JPanel[] Pdis;
+	private JButton bnext;
+	private JButton bprevious;
+	private JCheckBox[] ch;
+	private CardLayout CLO;
+	private String trial;
+	private String userp;
 
 	public PatientInfo()
 	{
@@ -140,7 +132,7 @@ public class PatientInfo extends JPanel implements ActionListener,ItemListener,F
 
 	}
 
-	public void fillcbstate()
+	private void fillcbstate()
 	{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -167,7 +159,7 @@ public class PatientInfo extends JPanel implements ActionListener,ItemListener,F
 		}
 	}
 
-	public void fillform()
+	private void fillform()
 	{
 		try {
 
@@ -245,7 +237,7 @@ public class PatientInfo extends JPanel implements ActionListener,ItemListener,F
 
 	}
 
-	public void print()
+	private void print()
 	{
 
 		P = new JPanel();
@@ -279,7 +271,7 @@ public class PatientInfo extends JPanel implements ActionListener,ItemListener,F
 			Pdis[i] = new JPanel();
 			Pdis[i].setLayout(new GridLayout(1, 3));
 		}
-		String disname[] = {"Diabetes","High Blood Pressure","Respiratory Diseases","Heart Diseases","Digestive Diseases","High Cholesterol ","Stroke","Cancer","Alzheimer’s disease"};
+		String disname[] = {"Diabetes","High Blood Pressure","Respiratory Diseases","Heart Diseases","Digestive Diseases","High Cholesterol ","Stroke","Cancer","Alzheimerï¿½s disease"};
 
 		for(int i=0;i<ch.length;i++)
 			ch[i] = new JCheckBox(disname[i]);
@@ -534,7 +526,7 @@ public class PatientInfo extends JPanel implements ActionListener,ItemListener,F
 			}  
 
 	}
-	public void updateform()
+	private void updateform()
 	{
 
 
@@ -656,7 +648,7 @@ public class PatientInfo extends JPanel implements ActionListener,ItemListener,F
 
 	}
 
-	public void style()
+	private void style()
 
 	{
 

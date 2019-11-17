@@ -22,15 +22,22 @@ import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-public class DoctorLoginHome  extends JPanel implements ActionListener{
+class DoctorLoginHome  extends JPanel implements ActionListener{
 	
 	public static String userd = "";
 	
-	JLabel lbdoctor,lbpass;
-	JTextField txdoctor;
-	JPasswordField txpass;
-	JButton btsubmit,btcancel,btregister;
-	JPanel p1,p2,p3,p4,p5;
+	private JLabel lbdoctor;
+	private JLabel lbpass;
+	private JTextField txdoctor;
+	private JPasswordField txpass;
+	private JButton btsubmit;
+	private JButton btcancel;
+	private JButton btregister;
+	private JPanel p1;
+	private JPanel p2;
+	private JPanel p3;
+	private JPanel p4;
+	private JPanel p5;
 	JPanel pmain; 
 	
 	public DoctorLoginHome()
@@ -157,14 +164,14 @@ public class DoctorLoginHome  extends JPanel implements ActionListener{
 			new DoctorID1();
 		}
 	}
-	public void refresh()
+	private void refresh()
 	{
 		txdoctor.setText("");
 		txpass.setText("");
 	}
 	
 	
-	public void style()
+	private void style()
 	{
         Font f  = new Font("comic sans",Font.ITALIC+Font.BOLD , 40); 
         Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
@@ -197,7 +204,7 @@ public class DoctorLoginHome  extends JPanel implements ActionListener{
 		txpass.setFont(f2);
 	}
 	
-	public void print()
+	private void print()
 	{
 		GridLayout g = new GridLayout(5,1,70,70); 
 		setLayout(g); 

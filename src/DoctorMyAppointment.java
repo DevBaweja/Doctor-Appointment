@@ -28,14 +28,14 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.text.TableView.TableRow;
 
-public class DoctorMyAppointment extends JPanel {
+class DoctorMyAppointment extends JPanel {
 
 
-	String userd;
-	int c= 0;
-	JPanel P;
-	JTable tb;
-	JScrollPane jsp;
+	private String userd;
+	private int c= 0;
+	private JPanel P;
+	private JTable tb;
+	private JScrollPane jsp;
 	
 	public DoctorMyAppointment() {
 		
@@ -159,7 +159,7 @@ public class DoctorMyAppointment extends JPanel {
 		style();
 		validate();
 	}
-	public void style()
+	private void style()
 	{
 	     Font f  = new Font("comic sans",Font.ITALIC+Font.BOLD , 40); 
 	        Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
