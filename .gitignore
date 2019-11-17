@@ -1,7 +1,6 @@
 # Intellij Config
-.idea
+.idea/
+Doctor-Appointment.iml
 
 # Bin files
 out/
-
-Doctor-Appointment.iml
