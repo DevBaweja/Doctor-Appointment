@@ -1,1 +1,7 @@
-out
+# Intellij Config
+.idea
+
+# Bin files
+out/
+
+Doctor-Appointment.iml
