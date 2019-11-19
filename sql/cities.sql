@@ -1,3 +1,5 @@
+-- noinspection SpellCheckingInspectionForFile
+
 -- phpMyAdmin SQL Dump
 -- version 3.1.1
 -- http://www.phpmyadmin.net
