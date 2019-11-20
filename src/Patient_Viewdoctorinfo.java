@@ -174,7 +174,7 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
                         con.close();
                     } catch (ClassNotFoundException | SQLException e)
                     {
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
                     }
 
@@ -206,7 +206,7 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
                         con.close();
                     } catch (ClassNotFoundException | SQLException e)
                     {
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
                     }
             }
@@ -232,7 +232,7 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
 
                     } catch (ClassNotFoundException | SQLException ae)
                     {
-                        // TODO Auto-generated catch block
+
                         ae.printStackTrace();
                     }
             }
@@ -248,7 +248,7 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
                         Statement stmt = con.createStatement();
                         stmt.executeUpdate("create database if not exists ManagementDb");
                         stmt.execute("Use ManagementDb");
-                        stmt.executeUpdate("create table if not exists  DoctorTb( username varchar(100),"
+                        stmt.executeUpdate("create table if not exists  doctortb( username varchar(100),"
                                 + "password varchar(100),"
                                 + "email varchar(100),"
                                 + "phone varchar(100),"
@@ -268,7 +268,7 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
                                 + "cloc varchar(100),"
                                 + "primary key(username))");
 
-                        PreparedStatement pstmt = con.prepareStatement("select * from DoctorTb where username = ?");
+                        PreparedStatement pstmt = con.prepareStatement("select * from doctortb where username = ?");
                         pstmt.setString(1, userd);
                         ResultSet rs = pstmt.executeQuery();
                         rs.next();
@@ -325,7 +325,7 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
                         con.close();
                     } catch (ClassNotFoundException | SQLException e)
                     {
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
                     }
 
@@ -419,7 +419,7 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
         @Override
         public void itemStateChanged(ItemEvent ie)
             {
-                // TODO Auto-generated method stub
+
                 Object src = ie.getSource();
                 if (src == cbstate)
                     {
@@ -452,7 +452,7 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
 
                             } catch (ClassNotFoundException | SQLException ae)
                             {
-                                // TODO Auto-generated catch block
+
                                 ae.printStackTrace();
                             }
                     } else if (chyy.getSelectedIndex() != 0 && chmm.getSelectedIndex() != 0)
@@ -489,14 +489,14 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
         @Override
         public void focusGained(FocusEvent e)
             {
-                // TODO Auto-generated method stub
+
 
             }
 
         @Override
         public void focusLost(FocusEvent e)
             {
-                // TODO Auto-generated method stub
+
 
             }
 
@@ -504,7 +504,7 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
         @Override
         public void actionPerformed(ActionEvent ae)
             {
-                // TODO Auto-generated method stub
+
                 Object src = ae.getSource();
                 if (src == btcancel)
                     {
@@ -541,7 +541,7 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
                                 con.close();
                             } catch (ClassNotFoundException | SQLException ce)
                             {
-                                // TODO Auto-generated catch block
+
                                 ce.printStackTrace();
                             }
 
@@ -640,25 +640,22 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
         @Override
         public void keyTyped(KeyEvent e)
             {
-                // TODO Auto-generated method stub
+
 
             }
 
         @Override
         public void keyPressed(KeyEvent e)
             {
-                // TODO Auto-generated method stub
+
 
             }
 
         @Override
         public void keyReleased(KeyEvent e)
             {
-                // TODO Auto-generated method stub
 
-                // TODO Auto-generated method stub
 
-                // TODO Auto-generated method stub
                 int code = e.getKeyCode();
                 //System.out.println(code);
                 if (txmobile.getText().length() <= 10)

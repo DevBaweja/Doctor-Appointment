@@ -4,7 +4,6 @@ class NewStateTable
     {
         public NewStateTable()
             {
-                // TODO Auto-generated constructor stub
                 System.out.println();
                 try
                     {
@@ -33,7 +32,7 @@ class NewStateTable
 
                     } catch (Exception e)
                     {
-                        // TODO: handle exception
+                        e.printStackTrace();
                     }
             }
     }

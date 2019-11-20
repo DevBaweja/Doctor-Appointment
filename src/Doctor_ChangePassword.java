@@ -114,7 +114,7 @@ class Doctor_ChangePassword extends JPanel implements ActionListener
         @Override
         public void actionPerformed(ActionEvent e)
             {
-                // TODO Auto-generated method stub
+
                 Object src = e.getSource();
                 if (src == btsubmit)
                     {
@@ -151,7 +151,7 @@ class Doctor_ChangePassword extends JPanel implements ActionListener
                         Statement stmt = con.createStatement();
                         stmt.executeUpdate("create database if not exists ManagementDb");
                         stmt.execute("Use ManagementDb");
-                        stmt.executeUpdate("create table if not exists  DoctorTb( username varchar(100),"
+                        stmt.executeUpdate("create table if not exists  doctortb( username varchar(100),"
                                 + "password varchar(100),"
                                 + "email varchar(100),"
                                 + "phone varchar(100),"
@@ -171,7 +171,7 @@ class Doctor_ChangePassword extends JPanel implements ActionListener
                                 + "cloc varchar(100),"
                                 + "primary key(username))");
 
-                        PreparedStatement pres = con.prepareStatement("select count(*) from DoctorTb where username=? and password=?");
+                        PreparedStatement pres = con.prepareStatement("select count(*) from doctortb where username=? and password=?");
                         pres.setString(1, txuser.getText());
                         String olpass = new String(txoldpss.getPassword());
                         pres.setString(2, olpass);
@@ -186,7 +186,7 @@ class Doctor_ChangePassword extends JPanel implements ActionListener
                                 int ans = JOptionPane.showConfirmDialog(null, "Do you really want to change your password", "Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                                 if (ans == JOptionPane.YES_OPTION)
                                     {
-                                        PreparedStatement prstmt = con.prepareStatement("update DoctorTb set password=? where username=?");
+                                        PreparedStatement prstmt = con.prepareStatement("update doctortb set password=? where username=?");
                                         String newpass = new String(txnewpass.getPassword());
                                         prstmt.setString(1, newpass);
                                         prstmt.setString(2, userd);
@@ -205,7 +205,7 @@ class Doctor_ChangePassword extends JPanel implements ActionListener
 
                     } catch (ClassNotFoundException | SQLException ae)
                     {
-                        // TODO Auto-generated catch block
+
                         ae.printStackTrace();
                     }
 

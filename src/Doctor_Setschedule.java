@@ -147,7 +147,7 @@ class Doctor_Setschedule extends JPanel implements ItemListener, ActionListener
         @Override
         public void itemStateChanged(ItemEvent e)
             {
-                // TODO Auto-generated method stub
+
                 Object src = e.getSource();
                 for (JCheckBox checkBox : ch)
                     {
@@ -190,7 +190,7 @@ class Doctor_Setschedule extends JPanel implements ItemListener, ActionListener
         @Override
         public void actionPerformed(ActionEvent e)
             {
-                // TODO Auto-generated method stub
+
                 Object src = e.getSource();
                 if (src == btsetschedule)
                     {
@@ -248,7 +248,7 @@ class Doctor_Setschedule extends JPanel implements ItemListener, ActionListener
 
                     } catch (ClassNotFoundException | SQLException ce)
                     {
-                        // TODO Auto-generated catch block
+
                         ce.printStackTrace();
                     }
             }
@@ -322,7 +322,7 @@ class Doctor_Setschedule extends JPanel implements ItemListener, ActionListener
                             }
                     } catch (ClassNotFoundException | SQLException ce)
                     {
-                        // TODO Auto-generated catch block
+
                         ce.printStackTrace();
                     }
             }

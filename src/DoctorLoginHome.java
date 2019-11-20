@@ -71,7 +71,7 @@ class DoctorLoginHome extends JPanel implements ActionListener
         @Override
         public void actionPerformed(ActionEvent e)
             {
-                // TODO Auto-generated method stub
+
                 Object src = e.getSource();
                 if (src == btcancel)
                     {
@@ -89,7 +89,7 @@ class DoctorLoginHome extends JPanel implements ActionListener
                                 Statement stmt = con.createStatement();
                                 stmt.executeUpdate("create database if not exists ManagementDb");
                                 stmt.execute("Use ManagementDb");
-                                stmt.executeUpdate("create table if not exists  DoctorTb( username varchar(100),"
+                                stmt.executeUpdate("create table if not exists  doctortb( username varchar(100),"
                                         + "password varchar(100),"
                                         + "email varchar(100),"
                                         + "phone varchar(100),"
@@ -109,7 +109,7 @@ class DoctorLoginHome extends JPanel implements ActionListener
                                         + "cloc varchar(100),"
                                         + "primary key(username))");
 
-                                PreparedStatement pres = con.prepareStatement("select count(*) from DoctorTb where username=? and password=?");
+                                PreparedStatement pres = con.prepareStatement("select count(*) from doctortb where username=? and password=?");
                                 pres.setString(1, txdoctor.getText());
                                 String pass = new String(txpass.getPassword());
                                 pres.setString(2, pass);
@@ -138,7 +138,7 @@ class DoctorLoginHome extends JPanel implements ActionListener
 
                             } catch (ClassNotFoundException | SQLException ae)
                             {
-                                // TODO Auto-generated catch block
+
                                 ae.printStackTrace();
                             }
 

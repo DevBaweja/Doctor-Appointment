@@ -201,7 +201,7 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
 
                     } catch (ClassNotFoundException | SQLException ce)
                     {
-                        // TODO Auto-generated catch block
+
                         ce.printStackTrace();
                     }
 
@@ -237,7 +237,7 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
 
                     } catch (ClassNotFoundException | SQLException ce)
                     {
-                        // TODO Auto-generated catch block
+
                         ce.printStackTrace();
                     }
             }
@@ -313,7 +313,7 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
 
                     } catch (ClassNotFoundException | SQLException ce)
                     {
-                        // TODO Auto-generated catch block
+
                         ce.printStackTrace();
                     }
             }
@@ -403,7 +403,7 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
         @Override
         public void actionPerformed(ActionEvent e)
             {
-                // TODO Auto-generated method stub
+
                 Object src = e.getSource();
                 if (src == btbook)
                     {
@@ -593,7 +593,7 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
                             con.close();
                     } catch (ClassNotFoundException | SQLException e)
                     {
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
                     }
             }
@@ -656,7 +656,7 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
                         con.close();
                     } catch (ClassNotFoundException | SQLException ce)
                     {
-                        // TODO Auto-generated catch block
+
                         ce.printStackTrace();
                     }
             }
@@ -664,7 +664,7 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
         @Override
         public void itemStateChanged(ItemEvent e)
             {
-                // TODO Auto-generated method stub
+
                 Object src = e.getSource();
                 if (e.getStateChange() == ItemEvent.SELECTED)
                     {

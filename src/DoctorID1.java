@@ -5,6 +5,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
+import java.util.Objects;
 
 
 class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusListener, KeyListener
@@ -329,7 +330,7 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
                     {
                         cbcity.removeAllItems();
                         cbcity.addItem("Select City");
-                        String s = cbstate.getSelectedItem().toString();
+                        String s = Objects.requireNonNull(cbstate.getSelectedItem()).toString();
                         s = s.replace(" ", "_");
                         s = s.replace("&", "and");
                         try
@@ -350,11 +351,11 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
 
                             } catch (ClassNotFoundException ae)
                             {
-                                // TODO Auto-generated catch block
+
                                 ae.printStackTrace();
                             } catch (SQLException ae)
                             {
-                                // TODO Auto-generated catch block
+
                                 ae.printStackTrace();
                             }
                     } else
@@ -362,8 +363,8 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
                     if (chyy.getSelectedIndex() != 0 && chmm.getSelectedIndex() != 0)
                         {
 
-                            int yy = Integer.parseInt(chyy.getSelectedItem().toString());
-                            int mm = Integer.parseInt(chmm.getSelectedItem().toString());
+                            int yy = Integer.parseInt(Objects.requireNonNull(chyy.getSelectedItem()).toString());
+                            int mm = Integer.parseInt(Objects.requireNonNull(chmm.getSelectedItem()).toString());
 
                             // every time it come here we will remove previous entered item
                             // and then it will add automatically
@@ -471,7 +472,7 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
 
         private void createDoctor()
             {
-                // TODO Auto-generated method stub
+
                 try
                     {
 
@@ -480,14 +481,14 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
                         Statement stmt = con.createStatement();
                         stmt.executeUpdate("create database if not exists ManagementDb");
                         stmt.execute("Use ManagementDb");
-                        stmt.executeUpdate("create table if not exists  DoctorTb( username varchar(100),"
+                        stmt.executeUpdate("create table if not exists  doctortb( username varchar(100),"
                                 + "password varchar(100)," + "email varchar(100)," + "phone varchar(100)," + "gender int,"
                                 + "material int," + "dob date ," + "location varchar(100)," + "address varchar(100),"
                                 + "city varchar(100)," + "state varchar(100)," + "spec varchar(100)," + "qual varchar(100),"
                                 + "lang varchar(100)," + "hname varchar(100)," + "hloc varchar(100),"
                                 + "cname varchar(100)," + "cloc varchar(100)," + "primary key(username))");
 
-                        PreparedStatement pres = con.prepareStatement("select count(*) from DoctorTb where username=?");
+                        PreparedStatement pres = con.prepareStatement("select count(*) from doctortb where username=?");
                         pres.setString(1, txuser.getText());
 
                         ResultSet rs = pres.executeQuery();
@@ -497,7 +498,7 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
                         if (c == 0)
                             {
                                 PreparedStatement pre = con.prepareStatement(
-                                        "insert into DoctorTb (username,password,email,phone,gender,material,dob,location,address,city,state,spec,qual,lang,hname,hloc,cname,cloc) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                                        "insert into doctortb (username,password,email,phone,gender,material,dob,location,address,city,state,spec,qual,lang,hname,hloc,cname,cloc) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
                                 pre.setString(1, txuser.getText());
                                 String pass = new String(txpass.getPassword());
@@ -516,9 +517,9 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
                                 // 1 for single
                                 // 2 for married
 
-                                int yy = Integer.parseInt(chyy.getSelectedItem().toString());
-                                int mm = Integer.parseInt(chmm.getSelectedItem().toString());
-                                int dd = Integer.parseInt(chdd.getSelectedItem().toString());
+                                int yy = Integer.parseInt(Objects.requireNonNull(chyy.getSelectedItem()).toString());
+                                int mm = Integer.parseInt(Objects.requireNonNull(chmm.getSelectedItem()).toString());
+                                int dd = Integer.parseInt(Objects.requireNonNull(chdd.getSelectedItem()).toString());
 
                                 Date dob = new Date(yy - 1900, mm - 1, dd);
                                 /*
@@ -530,11 +531,11 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
 
                                 pre.setString(8, txlocation.getText());
                                 pre.setString(9, taddress.getText());
-                                pre.setString(10, cbcity.getSelectedItem().toString());
-                                pre.setString(11, cbstate.getSelectedItem().toString());
+                                pre.setString(10, Objects.requireNonNull(cbcity.getSelectedItem()).toString());
+                                pre.setString(11, Objects.requireNonNull(cbstate.getSelectedItem()).toString());
 
-                                pre.setString(12, chspecilization.getSelectedItem().toString());
-                                pre.setString(13, chqualification.getSelectedItem().toString());
+                                pre.setString(12, Objects.requireNonNull(chspecilization.getSelectedItem()).toString());
+                                pre.setString(13, Objects.requireNonNull(chqualification.getSelectedItem()).toString());
 
                                 String lan = "";
                                 lan += chenglish.isSelected() ? "1" : "0";
@@ -561,11 +562,11 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
                         con.close();
                     } catch (ClassNotFoundException e)
                     {
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
                     } catch (SQLException e)
                     {
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
                     }
             }
@@ -624,13 +625,13 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
                         Statement stmt = con.createStatement();
                         stmt.executeUpdate("create database if not exists ManagementDb");
                         stmt.execute("Use ManagementDb");
-                        stmt.executeUpdate("create table if not exists  DoctorTb( username varchar(100)," + "password varchar(100),"
+                        stmt.executeUpdate("create table if not exists  doctortb( username varchar(100)," + "password varchar(100),"
                                 + "email varchar(100)," + "phone varchar(100)," + "gender int," + "material int," + "dob date ,"
                                 + "location varchar(100)," + "address varchar(100)," + "city varchar(100)," + "state varchar(100),"
                                 + "spec varchar(100)," + "qual varchar(100)," + "lang varchar(100)," + "hname varchar(100),"
                                 + "hloc varchar(100)," + "cname varchar(100)," + "cloc varchar(100)," + "primary key(username))");
 
-                        PreparedStatement pres = con.prepareStatement("select count(*) from DoctorTb where username=?");
+                        PreparedStatement pres = con.prepareStatement("select count(*) from doctortb where username=?");
                         pres.setString(1, txuser.getText());
 
                         ResultSet rs = pres.executeQuery();
@@ -648,11 +649,11 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
 
                     } catch (ClassNotFoundException ae)
                     {
-                        // TODO Auto-generated catch block
+
                         ae.printStackTrace();
                     } catch (SQLException ae)
                     {
-                        // TODO Auto-generated catch block
+
                         ae.printStackTrace();
                     }
             }
@@ -660,21 +661,21 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
         @Override
         public void keyTyped(KeyEvent e)
             {
-                // TODO Auto-generated method stub
+
 
             }
 
         @Override
         public void keyPressed(KeyEvent e)
             {
-                // TODO Auto-generated method stub
+
 
             }
 
         @Override
         public void keyReleased(KeyEvent e)
             {
-                // TODO Auto-generated method stub
+
                 Object src = e.getSource();
                 // System.out.println(code);
                 if (src == txmobile)

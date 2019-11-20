@@ -5,8 +5,6 @@ class StateTable
 
         public StateTable()
             {
-
-                // TODO Auto-generated constructor stub
                 try
                     {
                         Class.forName("com.mysql.jdbc.Driver");
@@ -31,7 +29,7 @@ class StateTable
                         stmt.execute("create table if not exists _statestb(state_name varchar(100) primary key)");
                         for (String s : original)
                             {
-                                PreparedStatement pre = con.prepareStatement("insert into _statestb values(?)");
+                                PreparedStatement pre = con.prepareStatement(" insert into _statestb values(?)");
                                 pre.setString(1, s);
                                 System.out.println(s);
                                 pre.executeUpdate();
@@ -39,7 +37,7 @@ class StateTable
 
                     } catch (Exception e)
                     {
-                        // TODO: handle exception
+                        e.printStackTrace();
                     }
             }
     }

@@ -27,7 +27,7 @@ class CreatingCombo
 
                     } catch (ClassNotFoundException | SQLException ae)
                     {
-                        // TODO Auto-generated catch block
+
                         ae.printStackTrace();
                     }
             }
@@ -55,7 +55,7 @@ class CreatingCombo
                         con.close();
                     } catch (ClassNotFoundException | SQLException e)
                     {
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
                     }
             }
@@ -82,7 +82,7 @@ class CreatingCombo
                         con.close();
                     } catch (ClassNotFoundException | SQLException e)
                     {
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
                     }
             }

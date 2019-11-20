@@ -47,7 +47,7 @@ public class CitiesAndState extends JApplet implements ItemListener
 
                     } catch (ClassNotFoundException | SQLException ae)
                     {
-                        // TODO Auto-generated catch block
+
                         ae.printStackTrace();
                     }
 
@@ -62,7 +62,7 @@ public class CitiesAndState extends JApplet implements ItemListener
         @Override
         public void itemStateChanged(ItemEvent e)
             {
-                // TODO Auto-generated method stub
+
                 Object src = e.getSource();
                 if (src == cbstate) // Fill cities
                     {
@@ -79,7 +79,7 @@ public class CitiesAndState extends JApplet implements ItemListener
 
         private void fillIndex()
             {
-                // TODO Auto-generated method stub
+
                 String c = Objects.requireNonNull(cbcities.getSelectedItem()).toString();
                 try
                     {
@@ -103,14 +103,14 @@ public class CitiesAndState extends JApplet implements ItemListener
 
                     } catch (ClassNotFoundException | SQLException ae)
                     {
-                        // TODO Auto-generated catch block
+
                         ae.printStackTrace();
                     }
             }
 
         private void fillCities()
             {
-                // TODO Auto-generated method stub
+
                 String s = Objects.requireNonNull(cbstate.getSelectedItem()).toString();
                 try
                     {
@@ -133,7 +133,7 @@ public class CitiesAndState extends JApplet implements ItemListener
 
                     } catch (ClassNotFoundException | SQLException ae)
                     {
-                        // TODO Auto-generated catch block
+
                         ae.printStackTrace();
                     }
             }

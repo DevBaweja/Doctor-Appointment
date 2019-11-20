@@ -81,7 +81,7 @@ class DoctorTabbedBar extends JDialog implements ActionListener
 
                     } catch (ClassNotFoundException | SQLException e)
                     {
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
                     }
 
@@ -102,7 +102,7 @@ class DoctorTabbedBar extends JDialog implements ActionListener
         @Override
         public void actionPerformed(ActionEvent e)
             {
-                // TODO Auto-generated method stub
+
                 Object src = e.getSource();
                 if (src == btlogout)
                     {

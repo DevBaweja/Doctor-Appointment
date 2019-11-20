@@ -136,7 +136,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
 
                     } catch (ClassNotFoundException | SQLException ae)
                     {
-                        // TODO Auto-generated catch block
+
                         ae.printStackTrace();
                     }
             }
@@ -174,7 +174,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
 
                     } catch (ClassNotFoundException | SQLException ae)
                     {
-                        // TODO Auto-generated catch block
+
                         ae.printStackTrace();
                     }
             }
@@ -252,7 +252,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
         @Override
         public void itemStateChanged(ItemEvent e)
             {
-                // TODO Auto-generated method stub
+
                 if (e.getStateChange() == ItemEvent.SELECTED)
                     {
                         Object src = e.getSource();
@@ -333,7 +333,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
 
                         stmt.executeUpdate("create database if not exists ManagementDb");
                         stmt.execute("Use ManagementDb");
-                        stmt.executeUpdate("create table if not exists  DoctorTb( username varchar(100),"
+                        stmt.executeUpdate("create table if not exists  doctortb( username varchar(100),"
                                 + "password varchar(100),"
                                 + "email varchar(100),"
                                 + "phone varchar(100),"
@@ -353,7 +353,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
                                 + "cloc varchar(100),"
                                 + "primary key(username))");
 
-                        PreparedStatement pstmt = con.prepareStatement("select distinct spec from DoctorTb where state=? and city=?");
+                        PreparedStatement pstmt = con.prepareStatement("select distinct spec from doctortb where state=? and city=?");
                         pstmt.setString(1, Objects.requireNonNull(cbstate.getSelectedItem()).toString());
                         pstmt.setString(2, Objects.requireNonNull(cbcity.getSelectedItem()).toString());
 
@@ -388,7 +388,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
 
                         stmt.executeUpdate("create database if not exists ManagementDb");
                         stmt.execute("Use ManagementDb");
-                        stmt.executeUpdate("create table if not exists  DoctorTb( username varchar(100),"
+                        stmt.executeUpdate("create table if not exists  doctortb( username varchar(100),"
                                 + "password varchar(100),"
                                 + "email varchar(100),"
                                 + "phone varchar(100),"
@@ -408,7 +408,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
                                 + "cloc varchar(100),"
                                 + "primary key(username))");
 
-                        PreparedStatement pstmt = con.prepareStatement("select distinct  hname from DoctorTb where state=? and city=?");
+                        PreparedStatement pstmt = con.prepareStatement("select distinct  hname from doctortb where state=? and city=?");
                         pstmt.setString(1, Objects.requireNonNull(cbstate.getSelectedItem()).toString());
                         pstmt.setString(2, Objects.requireNonNull(cbcity.getSelectedItem()).toString());
 
@@ -427,7 +427,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
         @Override
         public void actionPerformed(ActionEvent e)
             {
-                // TODO Auto-generated method stub
+
                 Object src = e.getSource();
                 if (src == btsearch)
                     {
@@ -454,7 +454,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
 
                         stmt.executeUpdate("create database if not exists ManagementDb");
                         stmt.execute("Use ManagementDb");
-                        stmt.executeUpdate("create table if not exists  DoctorTb( username varchar(100),"
+                        stmt.executeUpdate("create table if not exists  doctortb( username varchar(100),"
                                 + "password varchar(100),"
                                 + "email varchar(100),"
                                 + "phone varchar(100),"
@@ -474,7 +474,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
                                 + "cloc varchar(100),"
                                 + "primary key(username))");
 
-                        PreparedStatement pstmt = con.prepareStatement("select username from DoctorTb where state=? and city=? " + condition + " ");
+                        PreparedStatement pstmt = con.prepareStatement("select username from doctortb where state=? and city=? " + condition + " ");
                         pstmt.setString(1, Objects.requireNonNull(cbstate.getSelectedItem()).toString());
                         pstmt.setString(2, Objects.requireNonNull(cbcity.getSelectedItem()).toString());
                         ResultSet rs = pstmt.executeQuery();
@@ -525,7 +525,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
 
                         stmt.executeUpdate("create database if not exists ManagementDb");
                         stmt.execute("Use ManagementDb");
-                        stmt.executeUpdate("create table if not exists  DoctorTb( username varchar(100),"
+                        stmt.executeUpdate("create table if not exists  doctortb( username varchar(100),"
                                 + "password varchar(100),"
                                 + "email varchar(100),"
                                 + "phone varchar(100),"
@@ -545,7 +545,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
                                 + "cloc varchar(100),"
                                 + "primary key(username))");
 
-                        PreparedStatement pstmt = con.prepareStatement("select count(*) from DoctorTb where state=? and city=? " + condition + " ");
+                        PreparedStatement pstmt = con.prepareStatement("select count(*) from doctortb where state=? and city=? " + condition + " ");
                         pstmt.setString(1, Objects.requireNonNull(cbstate.getSelectedItem()).toString());
                         pstmt.setString(2, Objects.requireNonNull(cbcity.getSelectedItem()).toString());
                         ResultSet rs = pstmt.executeQuery();
@@ -559,7 +559,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
                                 Object[][] row = new Object[c][9];
 
 
-                                PreparedStatement pstmt1 = con.prepareStatement("select username,email,location,spec,hname,hloc from DoctorTb where state=? and city=? " + condition + " ");
+                                PreparedStatement pstmt1 = con.prepareStatement("select username,email,location,spec,hname,hloc from doctortb where state=? and city=? " + condition + " ");
                                 pstmt1.setString(1, cbstate.getSelectedItem().toString());
                                 pstmt1.setString(2, cbcity.getSelectedItem().toString());
 
@@ -645,7 +645,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
                             }
                     } catch (ClassNotFoundException | SQLException ce)
                     {
-                        // TODO Auto-generated catch block
+
                         ce.printStackTrace();
                     }
                 //if(finalrate == -1)
@@ -691,7 +691,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
                             }
                     } catch (ClassNotFoundException | SQLException ce)
                     {
-                        // TODO Auto-generated catch block
+
                         ce.printStackTrace();
                     }
                 return (finalappoint);
@@ -735,7 +735,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
                             }
                     } catch (ClassNotFoundException | SQLException ce)
                     {
-                        // TODO Auto-generated catch block
+
                         ce.printStackTrace();
                     }
                 return (finalpatient);

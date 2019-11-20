@@ -6,7 +6,6 @@ class StatesDatabase
         // Make it main in case of creating states database
         public StatesDatabase()
             {
-                // TODO Auto-generated constructor stub
                 try
                     {
                         Class.forName("com.mysql.jdbc.Driver");
@@ -67,7 +66,7 @@ class StatesDatabase
 
                     } catch (ClassNotFoundException | SQLException ae)
                     {
-                        // TODO Auto-generated catch block
+
                         ae.printStackTrace();
                     }
 

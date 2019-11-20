@@ -67,7 +67,7 @@ class PatientLoginHome extends JPanel implements ActionListener
         @Override
         public void actionPerformed(ActionEvent e)
             {
-                // TODO Auto-generated method stub
+
                 Object src = e.getSource();
                 if (src == btcancel)
                     {
@@ -85,7 +85,7 @@ class PatientLoginHome extends JPanel implements ActionListener
                                 Statement stmt = con.createStatement();
                                 stmt.executeUpdate("create database if not exists ManagementDb");
                                 stmt.execute("Use ManagementDb");
-                                stmt.executeUpdate("create table if not exists  PatientTb( username varchar(100),"
+                                stmt.executeUpdate("create table if not exists  patienttb( username varchar(100),"
                                         + "password varchar(100),"
                                         + "email varchar(100),"
                                         + "phone varchar(100),"
@@ -100,7 +100,7 @@ class PatientLoginHome extends JPanel implements ActionListener
                                         + "past varchar(100),"
                                         + "primary key(username))");
 
-                                PreparedStatement pres = con.prepareStatement("select count(*) from PatientTb where username=? and password=?");
+                                PreparedStatement pres = con.prepareStatement("select count(*) from patienttb where username=? and password=?");
                                 pres.setString(1, txpatient.getText());
                                 String pass = new String(txpass.getPassword());
                                 pres.setString(2, pass);
@@ -129,7 +129,7 @@ class PatientLoginHome extends JPanel implements ActionListener
 
                             } catch (ClassNotFoundException | SQLException ae)
                             {
-                                // TODO Auto-generated catch block
+
                                 ae.printStackTrace();
                             }
 

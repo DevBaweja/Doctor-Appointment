@@ -33,7 +33,7 @@ class AdminShowAllDoctor extends JPanel
                         Statement stmt = con.createStatement();
                         stmt.executeUpdate("create database if not exists ManagementDb");
                         stmt.execute("Use ManagementDb");
-                        stmt.executeUpdate("create table if not exists  DoctorTb( username varchar(100),"
+                        stmt.executeUpdate("create table if not exists  doctortb( username varchar(100),"
                                 + "password varchar(100),"
                                 + "email varchar(100),"
                                 + "phone varchar(100),"
@@ -53,7 +53,7 @@ class AdminShowAllDoctor extends JPanel
                                 + "cloc varchar(100),"
                                 + "primary key(username))");
 
-                        ResultSet rs = stmt.executeQuery("select count(*) from DoctorTb");
+                        ResultSet rs = stmt.executeQuery("select count(*) from doctortb");
                         rs.next();
 
                         c = rs.getInt(1);
@@ -78,7 +78,7 @@ class AdminShowAllDoctor extends JPanel
 
                         stmt.executeUpdate("create database if not exists ManagementDb");
                         stmt.execute("Use ManagementDb");
-                        stmt.executeUpdate("create table if not exists  DoctorTb( username varchar(100),"
+                        stmt.executeUpdate("create table if not exists  doctortb( username varchar(100),"
                                 + "password varchar(100),"
                                 + "email varchar(100),"
                                 + "phone varchar(100),"
@@ -98,7 +98,7 @@ class AdminShowAllDoctor extends JPanel
                                 + "cloc varchar(100),"
                                 + "primary key(username))");
 
-                        ResultSet rs = stmt.executeQuery("select * from DoctorTb");
+                        ResultSet rs = stmt.executeQuery("select * from doctortb");
 
 
                         for (int i = 0; i < c && rs.next(); i++)

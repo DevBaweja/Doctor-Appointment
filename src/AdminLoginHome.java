@@ -53,7 +53,7 @@ class AdminLoginHome extends JPanel implements ActionListener
         @Override
         public void actionPerformed(ActionEvent e)
             {
-                // TODO Auto-generated method stub
+
                 Object src = e.getSource();
                 if (src == btcancel)
                     {
@@ -88,11 +88,8 @@ class AdminLoginHome extends JPanel implements ActionListener
             {
 
                 Font f = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
-                //noinspection unused
                 Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
-                Border loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
                 Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-                Border raisedbevel = BorderFactory.createRaisedBevelBorder();
                 Border h = BorderFactory.createTitledBorder(loweredbevel, ":: ADMIN LOGIN ::", TitledBorder.CENTER, TitledBorder.TOP, f, Color.red);
                 Border k = BorderFactory.createMatteBorder(0, 10, 0, 0, Color.red);
                 setBorder(BorderFactory.createCompoundBorder(h, k));

@@ -6,7 +6,6 @@ class NewStatesDatabase
 
         public NewStatesDatabase()
             {
-                // TODO Auto-generated constructor stub
                 try
                     {
                         Class.forName("com.mysql.jdbc.Driver");
@@ -44,7 +43,7 @@ class NewStatesDatabase
                             }
                     } catch (Exception e)
                     {
-                        // TODO: handle exception
+                        e.printStackTrace();
                     }
             }
     }

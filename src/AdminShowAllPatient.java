@@ -38,7 +38,7 @@ class AdminShowAllPatient extends JPanel
                         stmt.executeUpdate("create database if not exists ManagementDb");
                         stmt.execute("Use ManagementDb");
 
-                        stmt.executeUpdate("create table if not exists  PatientTb( username varchar(100),"
+                        stmt.executeUpdate("create table if not exists  patienttb( username varchar(100),"
                                 + "password varchar(100),"
                                 + "email varchar(100),"
                                 + "phone varchar(100),"
@@ -53,7 +53,7 @@ class AdminShowAllPatient extends JPanel
                                 + "past varchar(100),"
                                 + "primary key(username))");
 
-                        ResultSet rs = stmt.executeQuery("select count(*) from PatientTb");
+                        ResultSet rs = stmt.executeQuery("select count(*) from patienttb");
                         rs.next();
 
                         c = rs.getInt(1);
@@ -79,7 +79,7 @@ class AdminShowAllPatient extends JPanel
                         stmt.executeUpdate("create database if not exists ManagementDb");
                         stmt.execute("Use ManagementDb");
 
-                        stmt.executeUpdate("create table if not exists  PatientTb( username varchar(100),"
+                        stmt.executeUpdate("create table if not exists  patienttb( username varchar(100),"
                                 + "password varchar(100),"
                                 + "email varchar(100),"
                                 + "phone varchar(100),"
@@ -94,7 +94,7 @@ class AdminShowAllPatient extends JPanel
                                 + "past varchar(100),"
                                 + "primary key(username))");
 
-                        ResultSet rs = stmt.executeQuery("select * from PatientTb");
+                        ResultSet rs = stmt.executeQuery("select * from patienttb");
 
 
                         for (int i = 0; i < c && rs.next(); i++)

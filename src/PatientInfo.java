@@ -145,7 +145,7 @@ class PatientInfo extends JPanel implements ActionListener, ItemListener, FocusL
 
                     } catch (ClassNotFoundException | SQLException ae)
                     {
-                        // TODO Auto-generated catch block
+
                         ae.printStackTrace();
                     }
             }
@@ -161,7 +161,7 @@ class PatientInfo extends JPanel implements ActionListener, ItemListener, FocusL
                         Statement stmt = con.createStatement();
                         stmt.executeUpdate("create database if not exists ManagementDb");
                         stmt.execute("Use ManagementDb");
-                        stmt.executeUpdate("create table if not exists  PatientTb( username varchar(100),"
+                        stmt.executeUpdate("create table if not exists  patienttb( username varchar(100),"
                                 + "password varchar(100),"
                                 + "email varchar(100),"
                                 + "phone varchar(100),"
@@ -176,7 +176,7 @@ class PatientInfo extends JPanel implements ActionListener, ItemListener, FocusL
                                 + "past varchar(100),"
                                 + "primary key(username))");
 
-                        PreparedStatement pstmt = con.prepareStatement("select * from PatientTb where username = ?");
+                        PreparedStatement pstmt = con.prepareStatement("select * from patienttb where username = ?");
                         pstmt.setString(1, userp);
                         ResultSet rs = pstmt.executeQuery();
                         rs.next();
@@ -218,7 +218,7 @@ class PatientInfo extends JPanel implements ActionListener, ItemListener, FocusL
                         con.close();
                     } catch (ClassNotFoundException | SQLException e)
                     {
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
                     }
 
@@ -335,7 +335,7 @@ class PatientInfo extends JPanel implements ActionListener, ItemListener, FocusL
         @Override
         public void actionPerformed(ActionEvent ae)
             {
-                // TODO Auto-generated method stub
+
                 Object src = ae.getSource();
                 if (src == btedit)
                     {
@@ -382,23 +382,22 @@ class PatientInfo extends JPanel implements ActionListener, ItemListener, FocusL
         @Override
         public void keyTyped(KeyEvent e)
             {
-                // TODO Auto-generated method stub
+
 
             }
 
         @Override
         public void keyPressed(KeyEvent e)
             {
-                // TODO Auto-generated method stub
+
 
             }
 
         @Override
         public void keyReleased(KeyEvent e)
             {
-                // TODO Auto-generated method stub
 
-                // TODO Auto-generated method stub
+
                 int code = e.getKeyCode();
                 //System.out.println(code);
                 if (txmobile.getText().length() <= 10)
@@ -427,21 +426,21 @@ class PatientInfo extends JPanel implements ActionListener, ItemListener, FocusL
         @Override
         public void focusGained(FocusEvent e)
             {
-                // TODO Auto-generated method stub
+
 
             }
 
         @Override
         public void focusLost(FocusEvent e)
             {
-                // TODO Auto-generated method stub
+
 
             }
 
         @Override
         public void itemStateChanged(ItemEvent ie)
             {
-                // TODO Auto-generated method stub
+
                 Object src = ie.getSource();
                 if (src == cbstate)
                     {
@@ -474,7 +473,7 @@ class PatientInfo extends JPanel implements ActionListener, ItemListener, FocusL
 
                             } catch (ClassNotFoundException | SQLException ae)
                             {
-                                // TODO Auto-generated catch block
+
                                 ae.printStackTrace();
                             }
                     } else if (chyy.getSelectedIndex() != 0 && chmm.getSelectedIndex() != 0)
@@ -541,7 +540,7 @@ class PatientInfo extends JPanel implements ActionListener, ItemListener, FocusL
                                 Statement stmt = con.createStatement();
                                 stmt.executeUpdate("create database if not exists ManagementDb");
                                 stmt.execute("Use ManagementDb");
-                                stmt.executeUpdate("create table if not exists  PatientTb( username varchar(100),"
+                                stmt.executeUpdate("create table if not exists  patienttb( username varchar(100),"
                                         + "password varchar(100),"
                                         + "email varchar(100),"
                                         + "phone varchar(100),"
@@ -556,7 +555,7 @@ class PatientInfo extends JPanel implements ActionListener, ItemListener, FocusL
                                         + "past varchar(100),"
                                         + "primary key(username))");
 
-                                PreparedStatement pre = con.prepareStatement("update PatientTb set email=?,phone=?,gender=?,material=?,dob=?,location=?,address=?,city=?,state=?,disease=?,past=? where username=?");
+                                PreparedStatement pre = con.prepareStatement("update patienttb set email=?,phone=?,gender=?,material=?,dob=?,location=?,address=?,city=?,state=?,disease=?,past=? where username=?");
 
                                 pre.setString(1, txemail.getText());
                                 pre.setString(2, txmobile.getText());
@@ -616,7 +615,7 @@ class PatientInfo extends JPanel implements ActionListener, ItemListener, FocusL
 
                             } catch (ClassNotFoundException | SQLException e)
                             {
-                                // TODO Auto-generated catch block
+
                                 e.printStackTrace();
                             }
                     }
