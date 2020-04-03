@@ -4,7 +4,6 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
-import javax.swing.text.TableView.TableRow;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,26 +28,19 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
         private final JPanel Pfield;
 
         private JTable tb;
-        JPanel Ps;
         private int jspvis = 0;
         private int c = 0;
-
         private String condition = "";
 
-
-        public static String userd;
-        int k, p;
         private float finalrate;
         private int finalappoint;
         private int finalpatient;
-        // used for booking doctor
+        private String userd;
+        private String userp;
 
-        Patient_SearchDoctor()
+        Patient_SearchDoctor(String userp)
             {
-
-                String userp = PatientTabbedBar.userp;
-
-                // Already login
+                this.userp = userp;
                 userd = ""; // always empty
                 // Doctor whose appointment is to be booked
 
@@ -182,48 +174,45 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
         private void style()
             {
 
-                Color c1 = new Color(20, 110, 140);
-                Font f = new Font("comic sans", Font.ITALIC + Font.BOLD, 25);
-                Font f1 = new Font("Arial", Font.BOLD, 20);
+                Font ftitle = new Font("comic sans", Font.ITALIC + Font.BOLD, 30);
                 Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-                Border raisedbevel = BorderFactory.createRaisedBevelBorder();
-                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: Search a Doctor ::", TitledBorder.CENTER, TitledBorder.TOP, f, Color.red);
+                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: Search a Doctor ::", TitledBorder.CENTER, TitledBorder.TOP, ftitle, Color.red);
                 Border k = BorderFactory.createMatteBorder(0, 10, 0, 0, Color.red);
                 Pfield.setBorder(BorderFactory.createCompoundBorder(h, k));
 
-                lbstate.setFont(f);
-                lbcity.setFont(f);
-                lbspec.setFont(f);
-                lbhos.setFont(f);
+                Font flb = new Font("Arial", Font.BOLD, 25);
+                lbstate.setFont(flb);
+                lbcity.setFont(flb);
+                lbspec.setFont(flb);
+                lbhos.setFont(flb);
 
-                lbstate.setForeground(c1);
-                lbcity.setForeground(c1);
-                lbspec.setForeground(c1);
-                lbhos.setForeground(c1);
+                Color clb = new Color(20, 110, 140);
+                lbstate.setForeground(clb);
+                lbcity.setForeground(clb);
+                lbspec.setForeground(clb);
+                lbhos.setForeground(clb);
 
-                btsearch.setForeground(c1);
-                btsearch.setFont(f1);
+                btsearch.setForeground(clb);
+                btsearch.setFont(flb);
 
-                btchoose.setForeground(c1);
-                btchoose.setFont(f1);
-                //tb.setForeground(c1);
-
+                btchoose.setForeground(clb);
+                btchoose.setFont(flb);
             }
 
         private void tablestyle()
             {
-                Color c1 = new Color(20, 110, 140);
-                Font f1 = new Font(null, Font.BOLD, 20);
+                Color ctable = new Color(20, 110, 140);
+                Font ftable_head = new Font(null, Font.BOLD, 20);
                 JTableHeader header = tb.getTableHeader();
-                header.setBackground(c1);
-                header.setFont(f1);
+                header.setBackground(ctable);
+                header.setFont(ftable_head);
                 header.setForeground(Color.white);
                 header.setPreferredSize(new Dimension(getSize().width, 100));
                 ((DefaultTableCellRenderer) header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
 
-                tb.setForeground(c1);
-                Font f2 = new Font("comic sans", Font.BOLD, 15);
-                tb.setFont(f2);
+                tb.setForeground(ctable);
+                Font ftable = new Font("comic sans", Font.BOLD, 15);
+                tb.setFont(ftable);
                 //JTable.CENTER_ALIGNMENT
                 tb.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 
@@ -240,7 +229,6 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
                                 column.setPreferredWidth(75);
                             }
 
-                        TableRow rows = null;
                         for (int r = 0; r < c; r++)
                             {
                                 tb.setRowHeight(r, 50);
@@ -326,9 +314,6 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
                         Class.forName("com.mysql.jdbc.Driver"); // imported external jar mysql JConnector
 
                         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "");
-
-                        // server and default mysql port address , username , password
-
                         Statement stmt = con.createStatement();
 
                         stmt.executeUpdate("create database if not exists ManagementDb");
@@ -498,7 +483,7 @@ class Patient_SearchDoctor extends JPanel implements ItemListener, ActionListene
                                 userd = doctor.toString();
                                 int a = JOptionPane.showConfirmDialog(null, "Press Yes to View Doctor Info and Book Appointment", "Choose Your Requirement", JOptionPane.YES_NO_OPTION);
                                 if (a == JOptionPane.YES_OPTION)
-                                    new Patient_Viewdoctorinfo();
+                                    new Patient_Viewdoctorinfo(userp, userd);
                             }
 
                         //System.out.println("Number of records: "+ c);

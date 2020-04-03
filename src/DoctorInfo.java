@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
@@ -56,10 +55,10 @@ class DoctorInfo extends JPanel implements ActionListener, ItemListener, FocusLi
         private final JLabel lbclinl;
         private final String userd;
 
-        DoctorInfo()
+        DoctorInfo(String userd)
             {
 
-                userd = DoctorTabbedBar.userd; // taking username from previous login form
+                this.userd = userd; // taking username from previous login form
                 trial = "";
                 setVisible(true);
                 setSize(new Dimension(700, 700));
@@ -69,13 +68,13 @@ class DoctorInfo extends JPanel implements ActionListener, ItemListener, FocusLi
                 txuser.setEnabled(false);
                 txemail = new JTextField("Email ID");
 
-                cMs = new JComboBox<String>();
+                cMs = new JComboBox<>();
                 cMs.addItem("Select status");
                 cMs.addItem("Single");
                 cMs.addItem("Married");
 
                 txlocation = new JTextField("Location");
-                cbcity = new JComboBox<String>();
+                cbcity = new JComboBox<>();
                 cbcity.addItem("Select City");
                 cbstate = new JComboBox<>();
                 cbstate.addItem("Select State");
@@ -89,10 +88,10 @@ class DoctorInfo extends JPanel implements ActionListener, ItemListener, FocusLi
                 gr.add(ckfemale);
                 gr.add(ckhidden);
 
-                chspecilization = new JComboBox<String>();
+                chspecilization = new JComboBox<>();
                 chspecilization.addItem("Select Specilization");
                 fillspec();
-                chqualification = new JComboBox<String>();
+                chqualification = new JComboBox<>();
                 chqualification.addItem("Select Qualification");
                 fillqual();
 
@@ -105,7 +104,7 @@ class DoctorInfo extends JPanel implements ActionListener, ItemListener, FocusLi
                 txclinicname = new JTextField("Clinic Name");
                 txcliniclocation = new JTextField("Clinic Location");
 
-                chyy = new JComboBox<String>();
+                chyy = new JComboBox<>();
                 chmm = new JComboBox<>();
                 chdd = new JComboBox<>();
 
@@ -405,17 +404,12 @@ class DoctorInfo extends JPanel implements ActionListener, ItemListener, FocusLi
                 p.add(lbclinl);
                 p.add(txcliniclocation);
 
-                //add(phead,BorderLayout.NORTH);
                 add(p, BorderLayout.CENTER);
-                //p.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.cyan));
                 p.setBorder(BorderFactory.createTitledBorder(null, "::DOCTOR INFO::"));
-                //p.setBorder(BorderFactory.createEtchedBorder(10,Color.green, Color.BLACK));
-                //phead.setBorder(BorderFactory.createRaisedBevelBorder());
                 JPanel pbutton = new JPanel();
                 pbutton.add(btedit);
                 pbutton.add(btsubmit);
                 add(pbutton, BorderLayout.SOUTH);
-                // enableall(false);
             }
 
         @Override
@@ -700,52 +694,49 @@ class DoctorInfo extends JPanel implements ActionListener, ItemListener, FocusLi
 
             {
 
-                Color c1 = new Color(20, 110, 140);
-                Font f1 = new Font("comic sans", Font.ITALIC + Font.BOLD, 20);
-                Font f2 = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
-                Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
-                Border loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+                Font ftitle = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
                 Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-                Border raisedbevel = BorderFactory.createRaisedBevelBorder();
-                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: ABOUT ME ::", TitledBorder.CENTER, TitledBorder.TOP, f2, Color.red);
+                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: ABOUT ME ::", TitledBorder.CENTER, TitledBorder.TOP, ftitle, Color.red);
                 Border k = BorderFactory.createMatteBorder(0, 10, 0, 0, Color.red);
                 p.setBorder(BorderFactory.createCompoundBorder(h, k));
 
-                lbuser.setFont(f1);
-                lbemail.setFont(f1);
-                lbmobile.setFont(f1);
-                lbgender.setFont(f1);
-                lbstatus.setFont(f1);
-                lbdob.setFont(f1);
-                lblocation.setFont(f1);
-                lbaddress.setFont(f1);
-                lbstate.setFont(f1);
-                lbcity.setFont(f1);
-                lbqualification.setFont(f1);
-                lbspeci.setFont(f1);
-                lblang.setFont(f1);
-                lbhosn.setFont(f1);
-                lbhosl.setFont(f1);
-                lbclin.setFont(f1);
-                lbclinl.setFont(f1);
+                Font flb = new Font("comic sans", Font.ITALIC + Font.BOLD, 20);
+                lbuser.setFont(flb);
+                lbemail.setFont(flb);
+                lbmobile.setFont(flb);
+                lbgender.setFont(flb);
+                lbstatus.setFont(flb);
+                lbdob.setFont(flb);
+                lblocation.setFont(flb);
+                lbaddress.setFont(flb);
+                lbstate.setFont(flb);
+                lbcity.setFont(flb);
+                lbqualification.setFont(flb);
+                lbspeci.setFont(flb);
+                lblang.setFont(flb);
+                lbhosn.setFont(flb);
+                lbhosl.setFont(flb);
+                lbclin.setFont(flb);
+                lbclinl.setFont(flb);
 
-                lbuser.setForeground(c1);
-                lbemail.setForeground(c1);
-                lbmobile.setForeground(c1);
-                lbgender.setForeground(c1);
-                lbstatus.setForeground(c1);
-                lbdob.setForeground(c1);
-                lblocation.setForeground(c1);
-                lbaddress.setForeground(c1);
-                lbstate.setForeground(c1);
-                lbcity.setForeground(c1);
-                lbqualification.setForeground(c1);
-                lbspeci.setForeground(c1);
-                lblang.setForeground(c1);
-                lbhosn.setForeground(c1);
-                lbhosl.setForeground(c1);
-                lbclin.setForeground(c1);
-                lbclinl.setForeground(c1);
+                Color clb = new Color(20, 110, 140);
+                lbuser.setForeground(clb);
+                lbemail.setForeground(clb);
+                lbmobile.setForeground(clb);
+                lbgender.setForeground(clb);
+                lbstatus.setForeground(clb);
+                lbdob.setForeground(clb);
+                lblocation.setForeground(clb);
+                lbaddress.setForeground(clb);
+                lbstate.setForeground(clb);
+                lbcity.setForeground(clb);
+                lbqualification.setForeground(clb);
+                lbspeci.setForeground(clb);
+                lblang.setForeground(clb);
+                lbhosn.setForeground(clb);
+                lbhosl.setForeground(clb);
+                lbclin.setForeground(clb);
+                lbclinl.setForeground(clb);
 
 
             }

@@ -303,7 +303,7 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
 
                 setLayout(new BorderLayout());
                 add(p, BorderLayout.CENTER); // default of JApplet
-                Font f = new Font("comic sans", Font.ITALIC + Font.BOLD, 30);
+                Font ftitle = new Font("comic sans", Font.ITALIC + Font.BOLD, 30);
                 @SuppressWarnings("unused")
                 Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
                 @SuppressWarnings("unused")
@@ -312,7 +312,7 @@ class DoctorID1 extends JDialog implements ActionListener, ItemListener, FocusLi
                 @SuppressWarnings("unused")
                 Border raisedbevel = BorderFactory.createRaisedBevelBorder();
                 Border h = BorderFactory.createTitledBorder(loweredbevel, ":: DOCTOR SIGNUP ::", TitledBorder.CENTER,
-                        TitledBorder.TOP, f, Color.red);
+                        TitledBorder.TOP, ftitle, Color.red);
                 Border k = BorderFactory.createMatteBorder(0, 10, 0, 0, Color.red);
                 p.setBorder(BorderFactory.createCompoundBorder(h, k));
                 p.setSize(new Dimension(1000, 800));

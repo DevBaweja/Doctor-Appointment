@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
@@ -156,27 +155,24 @@ class AdminShowAllPatient extends JPanel
 
         private void style()
             {
-                Font f = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
-                Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
-                Border loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+                Font ftitle = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
                 Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-                Border raisedbevel = BorderFactory.createRaisedBevelBorder();
-                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: PATIENTS ::", TitledBorder.CENTER, TitledBorder.TOP, f, Color.red);
+                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: PATIENTS ::", TitledBorder.CENTER, TitledBorder.TOP, ftitle, Color.red);
                 Border k = BorderFactory.createMatteBorder(0, 10, 0, 0, Color.red);
                 P.setBorder(BorderFactory.createCompoundBorder(h, k));
 
-                Color c1 = new Color(20, 110, 140);
-                Font f1 = new Font(null, Font.BOLD, 20);
+                Color ctable = new Color(20, 110, 140);
+                Font ftable_head = new Font(null, Font.BOLD, 20);
                 JTableHeader header = tb.getTableHeader();
-                header.setBackground(c1);
-                header.setFont(f1);
+                header.setBackground(ctable);
+                header.setFont(ftable_head);
                 header.setForeground(Color.white);
                 header.setPreferredSize(new Dimension(getSize().width, 100));
                 ((DefaultTableCellRenderer) header.getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
 
-                tb.setForeground(c1);
-                Font f2 = new Font("comic sans", Font.BOLD, 12);
-                tb.setFont(f2);
+                tb.setForeground(ctable);
+                Font ftable = new Font("comic sans", Font.BOLD, 12);
+                tb.setFont(ftable);
                 //JTable.CENTER_ALIGNMENT
                 tb.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 

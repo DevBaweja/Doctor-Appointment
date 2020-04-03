@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 class ContactUs extends JPanel
@@ -43,20 +42,16 @@ class ContactUs extends JPanel
         private void style()
             {
 
-                Color c1 = new Color(20, 110, 140);
-                Font f = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
-                Font f1 = new Font("Arial", Font.BOLD, 20);
+                Color clb = new Color(20, 110, 140);
+                Font flb = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
                 Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-                Border raisedbevel = BorderFactory.createRaisedBevelBorder();
-                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: Change Password ::", TitledBorder.CENTER, TitledBorder.TOP, f, Color.red);
-                Border k = BorderFactory.createMatteBorder(0, 10, 0, 0, Color.red);
 
-                lbaddress.setFont(f);
-                lbemail.setFont(f);
-                lbcontact.setFont(f);
+                lbaddress.setFont(flb);
+                lbemail.setFont(flb);
+                lbcontact.setFont(flb);
 
-                lbaddress.setForeground(c1);
-                lbemail.setForeground(c1);
+                lbaddress.setForeground(clb);
+                lbemail.setForeground(clb);
                 lbcontact.setForeground(Color.red);
             }
     }

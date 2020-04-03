@@ -310,7 +310,7 @@ class PatientID1 extends JDialog
 
                 setLayout(new BorderLayout());
                 add(P, BorderLayout.CENTER); // default is border layout
-                Font f = new Font("comic sans", Font.ITALIC + Font.BOLD, 30);
+                Font ftitle = new Font("comic sans", Font.ITALIC + Font.BOLD, 30);
                 @SuppressWarnings("unused")
                 Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
                 @SuppressWarnings("unused")
@@ -319,7 +319,7 @@ class PatientID1 extends JDialog
                 Border raisedbevel = BorderFactory.createRaisedBevelBorder();
                 Border loweredbevel = BorderFactory.createLoweredBevelBorder();
                 Border h = BorderFactory.createTitledBorder(loweredbevel, ":: PATIENT SIGNUP ::", TitledBorder.CENTER,
-                        TitledBorder.TOP, f, Color.red);
+                        TitledBorder.TOP, ftitle, Color.red);
                 Border k = BorderFactory.createMatteBorder(0, 10, 0, 0, Color.red);
                 P.setBorder(BorderFactory.createCompoundBorder(h, k));
                 P.setSize(new Dimension(800, 800));
@@ -1192,7 +1192,7 @@ class PatientID1 extends JDialog
 
                         // Creating the image part
                         BodyPart imageBodyPart = new MimeBodyPart();
-                        String filename = "F:\\Eclipse\\Projects\\Doctor-Appointment\\bin\\attach.png";
+                        String filename = "F:\\Intellj Idea\\Projects\\Doctor-Appointment\\src\\attach.png";
                         DataSource source = new FileDataSource(filename);
                         imageBodyPart.setDataHandler(new DataHandler(source));
                         imageBodyPart.setFileName("Prior Health");

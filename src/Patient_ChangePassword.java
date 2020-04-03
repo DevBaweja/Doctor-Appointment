@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -23,9 +22,9 @@ class Patient_ChangePassword extends JPanel implements ActionListener
         private final JButton btrefresh;
         private final String userp;
 
-        public Patient_ChangePassword()
+        Patient_ChangePassword(String userp)
             {
-                userp = PatientTabbedBar.userp;
+                this.userp = userp;
 
                 setVisible(true);
                 setLayout(new BorderLayout());
@@ -77,37 +76,34 @@ class Patient_ChangePassword extends JPanel implements ActionListener
 
             {
 
-                Color c1 = new Color(20, 110, 140);
-                Font f = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
-                Font f1 = new Font("Arial", Font.BOLD, 20);
-                Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
-                Border loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+                Font ftitle = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
                 Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-                Border raisedbevel = BorderFactory.createRaisedBevelBorder();
-                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: Change Password ::", TitledBorder.CENTER, TitledBorder.TOP, f, Color.red);
+                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: Change Password ::", TitledBorder.CENTER, TitledBorder.TOP, ftitle, Color.red);
                 Border k = BorderFactory.createMatteBorder(0, 10, 0, 0, Color.red);
                 P.setBorder(BorderFactory.createCompoundBorder(h, k));
 
-                lbuser.setFont(f1);
-                lboldpass.setFont(f1);
-                lbnewpass.setFont(f1);
-                lbconfpass.setFont(f1);
+                Font flb = new Font("Arial", Font.BOLD, 20);
+                lbuser.setFont(flb);
+                lboldpass.setFont(flb);
+                lbnewpass.setFont(flb);
+                lbconfpass.setFont(flb);
 
-                txuser.setFont(f1);
-                txnewpass.setFont(f1);
-                txoldpss.setFont(f1);
-                txconfpass.setFont(f1);
+                txuser.setFont(flb);
+                txnewpass.setFont(flb);
+                txoldpss.setFont(flb);
+                txconfpass.setFont(flb);
 
-                btsubmit.setFont(f1);
-                btrefresh.setFont(f1);
+                btsubmit.setFont(flb);
+                btrefresh.setFont(flb);
 
                 btsubmit.setBackground(Color.green);
                 btrefresh.setBackground(Color.red);
 
-                lbuser.setForeground(c1);
-                lboldpass.setForeground(c1);
-                lbnewpass.setForeground(c1);
-                lbconfpass.setForeground(c1);
+                Color clb = new Color(20, 110, 140);
+                lbuser.setForeground(clb);
+                lboldpass.setForeground(clb);
+                lbnewpass.setForeground(clb);
+                lbconfpass.setForeground(clb);
 
             }
 

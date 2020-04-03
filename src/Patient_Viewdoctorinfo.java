@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
@@ -50,15 +49,16 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
         private final JLabel lbhosl;
         private final JLabel lbclin;
         private final JLabel lbclinl;
-        private final String userd;
-        JPanel phead;
-        JCheckBox chlanghidden;
         private JPanel p;
         private String trial;
+        private String userp;
+        private String userd;
 
-        Patient_Viewdoctorinfo()
+        Patient_Viewdoctorinfo(String userp, String userd)
             {
-                userd = Patient_SearchDoctor.userd; // taking username from previous login form
+                this.userp = userp;
+                this.userd = userd;
+
                 trial = "";
                 setVisible(true);
                 setSize(new Dimension(700, 700));
@@ -403,12 +403,8 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
                 p.add(lbclinl);
                 p.add(txcliniclocation);
 
-                //add(phead,BorderLayout.NORTH);
                 add(p, BorderLayout.CENTER);
-                //p.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Color.cyan));
                 p.setBorder(BorderFactory.createTitledBorder(null, "::DOCTOR INFO::"));
-                //p.setBorder(BorderFactory.createEtchedBorder(10,Color.green, Color.BLACK));
-                //phead.setBorder(BorderFactory.createRaisedBevelBorder());
                 JPanel pbutton = new JPanel();
                 pbutton.add(btbook);
                 pbutton.add(btcancel);
@@ -534,7 +530,7 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
                                 else if (c == 1) // as there is only one doctor in schedule
                                     {
 
-                                        new Patient_BookingDoctor();
+                                        new Patient_BookingDoctor(userp, userd);
                                         this.dispose();
                                     }
 
@@ -587,52 +583,49 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
 
             {
 
-                Color c1 = new Color(20, 110, 140);
-                Font f1 = new Font("comic sans", Font.ITALIC + Font.BOLD, 20);
-                Font f2 = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
-                Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
-                Border loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+                Color clb = new Color(20, 110, 140);
+                Font ftitle = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
                 Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-                Border raisedbevel = BorderFactory.createRaisedBevelBorder();
-                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: ABOUT DOCTOR " + userd + " ::", TitledBorder.CENTER, TitledBorder.TOP, f2, Color.red);
+                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: ABOUT DOCTOR " + userd + " ::", TitledBorder.CENTER, TitledBorder.TOP, ftitle, Color.red);
                 Border k = BorderFactory.createMatteBorder(0, 10, 0, 0, Color.red);
                 p.setBorder(BorderFactory.createCompoundBorder(h, k));
 
-                lbuser.setFont(f1);
-                lbemail.setFont(f1);
-                lbmobile.setFont(f1);
-                lbgender.setFont(f1);
-                lbstatus.setFont(f1);
-                lbdob.setFont(f1);
-                lblocation.setFont(f1);
-                lbaddress.setFont(f1);
-                lbstate.setFont(f1);
-                lbcity.setFont(f1);
-                lbqualification.setFont(f1);
-                lbspeci.setFont(f1);
-                lblang.setFont(f1);
-                lbhosn.setFont(f1);
-                lbhosl.setFont(f1);
-                lbclin.setFont(f1);
-                lbclinl.setFont(f1);
+                Font flb = new Font("comic sans", Font.ITALIC + Font.BOLD, 20);
+                lbuser.setFont(flb);
+                lbemail.setFont(flb);
+                lbmobile.setFont(flb);
+                lbgender.setFont(flb);
+                lbstatus.setFont(flb);
+                lbdob.setFont(flb);
+                lblocation.setFont(flb);
+                lbaddress.setFont(flb);
+                lbstate.setFont(flb);
+                lbcity.setFont(flb);
+                lbqualification.setFont(flb);
+                lbspeci.setFont(flb);
+                lblang.setFont(flb);
+                lbhosn.setFont(flb);
+                lbhosl.setFont(flb);
+                lbclin.setFont(flb);
+                lbclinl.setFont(flb);
 
-                lbuser.setForeground(c1);
-                lbemail.setForeground(c1);
-                lbmobile.setForeground(c1);
-                lbgender.setForeground(c1);
-                lbstatus.setForeground(c1);
-                lbdob.setForeground(c1);
-                lblocation.setForeground(c1);
-                lbaddress.setForeground(c1);
-                lbstate.setForeground(c1);
-                lbcity.setForeground(c1);
-                lbqualification.setForeground(c1);
-                lbspeci.setForeground(c1);
-                lblang.setForeground(c1);
-                lbhosn.setForeground(c1);
-                lbhosl.setForeground(c1);
-                lbclin.setForeground(c1);
-                lbclinl.setForeground(c1);
+                lbuser.setForeground(clb);
+                lbemail.setForeground(clb);
+                lbmobile.setForeground(clb);
+                lbgender.setForeground(clb);
+                lbstatus.setForeground(clb);
+                lbdob.setForeground(clb);
+                lblocation.setForeground(clb);
+                lbaddress.setForeground(clb);
+                lbstate.setForeground(clb);
+                lbcity.setForeground(clb);
+                lbqualification.setForeground(clb);
+                lbspeci.setForeground(clb);
+                lblang.setForeground(clb);
+                lbhosn.setForeground(clb);
+                lbhosl.setForeground(clb);
+                lbclin.setForeground(clb);
+                lbclinl.setForeground(clb);
 
 
             }
@@ -640,15 +633,11 @@ class Patient_Viewdoctorinfo extends JDialog implements ActionListener, ItemList
         @Override
         public void keyTyped(KeyEvent e)
             {
-
-
             }
 
         @Override
         public void keyPressed(KeyEvent e)
             {
-
-
             }
 
         @Override

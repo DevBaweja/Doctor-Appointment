@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -34,31 +33,23 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
         private final JComboBox<String> cbme;
         private final JComboBox<String> cbes;
         private final JComboBox<String> cbee;
-        private final JPanel p1;
-        JPanel P;
+        private final JPanel P;
         private final JButton btbook;
         private final JButton btcancel;
-        private final String userd;
         private String mstart;
         private String mend;
         private String estart;
         private String eend;
+        private final String userp;
+        private final String userd;
 
-        Patient_BookingDoctor()
+        Patient_BookingDoctor(String userp, String userd)
             {
+                this.userp = userp;
+                this.userd = userd;
                 setVisible(true);
                 setSize(new Dimension(1000, 1000));
                 setPreferredSize(new Dimension(1000, 1000));
-                String userp = PatientTabbedBar.userp;
-
-
-                // Already login
-                userd = Patient_SearchDoctor.userd;
-
-                //here should be those who have filled their schedule
-
-                // Doctor whose appointment is to be booked
-
                 setLayout(new BorderLayout());
                 lbdoc = new JLabel("Doctor Name");
                 lbpat = new JLabel("Patient Name");
@@ -123,27 +114,27 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
                 pbtn.add(btbook);
                 pbtn.add(btcancel);
 
-                p1 = new JPanel();
+                P = new JPanel();
                 JPanel pslot = new JPanel();
                 pslot.add(chmslot);
                 pslot.add(cheslot);
 
-                p1.setLayout(new GridLayout(7, 2, 50, 50));
-                p1.add(lbdoc);
-                p1.add(txdoctor);
-                p1.add(lbpat);
-                p1.add(txpatient);
-                p1.add(lbdate);
-                p1.add(pdob);
-                p1.add(lbday);
-                p1.add(chday);
-                p1.add(lbslot);
-                p1.add(pslot);
-                p1.add(cbms);
-                p1.add(cbes);
-                p1.add(cbme);
-                p1.add(cbee);
-                add(p1, BorderLayout.CENTER);
+                P.setLayout(new GridLayout(7, 2, 50, 50));
+                P.add(lbdoc);
+                P.add(txdoctor);
+                P.add(lbpat);
+                P.add(txpatient);
+                P.add(lbdate);
+                P.add(pdob);
+                P.add(lbday);
+                P.add(chday);
+                P.add(lbslot);
+                P.add(pslot);
+                P.add(cbms);
+                P.add(cbes);
+                P.add(cbme);
+                P.add(cbee);
+                add(P, BorderLayout.CENTER);
                 add(pbtn, BorderLayout.SOUTH);
 
                 enableevening(false);
@@ -366,36 +357,32 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
         private void style()
             {
 
-                Color c1 = new Color(20, 110, 140);
-                Font f1 = new Font("comic sans", Font.ITALIC + Font.BOLD, 20);
-                Font f2 = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
-                Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
-                Border loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+                Font ftitle = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
                 Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-                Border raisedbevel = BorderFactory.createRaisedBevelBorder();
-                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: BOOK YOUR DOCTOR ::", TitledBorder.CENTER, TitledBorder.TOP, f2, Color.red);
+                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: BOOK YOUR DOCTOR ::", TitledBorder.CENTER, TitledBorder.TOP, ftitle, Color.red);
                 Border k = BorderFactory.createMatteBorder(0, 10, 0, 0, Color.red);
-                p1.setBorder(BorderFactory.createCompoundBorder(h, k));
+                P.setBorder(BorderFactory.createCompoundBorder(h, k));
 
-                lbdoc.setForeground(c1);
-                lbpat.setForeground(c1);
-                lbslot.setForeground(c1);
-                lbday.setForeground(c1);
-                lbdate.setForeground(c1);
-                txdoctor.setForeground(c1);
-                txpatient.setForeground(c1);
+                Color clb = new Color(20, 110, 140);
+                lbdoc.setForeground(clb);
+                lbpat.setForeground(clb);
+                lbslot.setForeground(clb);
+                lbday.setForeground(clb);
+                lbdate.setForeground(clb);
+                txdoctor.setForeground(clb);
+                txpatient.setForeground(clb);
 
-                btbook.setForeground(c1);
-                btcancel.setForeground(c1);
+                btbook.setForeground(clb);
+                btcancel.setForeground(clb);
 
-                Font f = new Font("comic sans", Font.BOLD, 25);
-                lbdoc.setFont(f);
-                lbpat.setFont(f);
-                lbday.setFont(f1);
-                lbdate.setFont(f1);
-                lbslot.setFont(f1);
-                txdoctor.setFont(f1);
-                txpatient.setFont(f1);
+                Font flb = new Font("comic sans", Font.BOLD, 25);
+                lbdoc.setFont(flb);
+                lbpat.setFont(flb);
+                lbday.setFont(flb);
+                lbdate.setFont(flb);
+                lbslot.setFont(flb);
+                txdoctor.setFont(flb);
+                txpatient.setFont(flb);
 
 
             }
@@ -448,7 +435,7 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
 
                         // finding if he has already booked an appointment before
                         PreparedStatement prstmt = con.prepareStatement("select count(*) from dr" + userd + "Tb where patient=?");
-                        prstmt.setString(1, txpatient.getText());
+                        prstmt.setString(1, userp);
                         ResultSet rs = prstmt.executeQuery();
 
                         rs.next();
@@ -457,7 +444,7 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
                             {
                                 PreparedStatement pres = con.prepareStatement("insert into dr" + userd + "Tb values(?,?,?,?,?,?,?,?)");
 
-                                pres.setString(1, txpatient.getText());
+                                pres.setString(1, userp);
 
                                 int yy = Integer.parseInt(Objects.requireNonNull(chyy.getSelectedItem()).toString());
                                 int mm = Integer.parseInt(Objects.requireNonNull(chmm.getSelectedItem()).toString());
@@ -515,12 +502,12 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
                                 // getting booking time
                                 // updating frequency and rating
                                 PreparedStatement p = con.prepareStatement("select frequency from dr" + userd + "Tb where patient=?");
-                                p.setString(1, txpatient.getText());
+                                p.setString(1, userp);
                                 ResultSet r = p.executeQuery();
                                 r.next();
-                                int f = r.getInt("frequency"); // for total appointment
+                                int freq = r.getInt("frequency"); // for total appointment
 
-                                JOptionPane.showMessageDialog(null, "You have booked appointment for dr " + userd + " " + f + " times before", "Thanks for Booking Again", JOptionPane.PLAIN_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "You have booked appointment for dr " + userd + " " + freq + " times before", "Thanks for Booking Again", JOptionPane.PLAIN_MESSAGE);
 
                                 Object[] s = {"0", "1", "2", "3", "4", "5"};
 
@@ -533,12 +520,12 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
                                     rate = -1; // if pressed cancel
                                 // dont press cancel
 
-                                f++; // increasing frequency
+                                freq++; // increasing frequency
 
                                 PreparedStatement pres = con.prepareStatement("update dr" + userd + "Tb set dob=?,day=?,slot=?,timestart=?,timeend=?,frequency=?,rating=? where patient=?");
-                                pres.setString(8, txpatient.getText());
+                                pres.setString(8, userp);
 
-                                pres.setInt(6, f); // setting new frequency
+                                pres.setInt(6, freq); // setting new frequency
 
 
                                 int yy = Integer.parseInt(Objects.requireNonNull(chyy.getSelectedItem()).toString());
@@ -567,7 +554,7 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
                                 else // remain it
                                     {
                                         PreparedStatement prerate = con.prepareStatement("select rating from dr" + userd + "Tb where patient=?");
-                                        prerate.setString(1, txpatient.getText());
+                                        prerate.setString(1, userp);
                                         ResultSet rsetprerate = prerate.executeQuery();
                                         rsetprerate.next();
                                         int rpre = rsetprerate.getInt(1);
@@ -711,9 +698,6 @@ class Patient_BookingDoctor extends JDialog implements ActionListener, ItemListe
                                     }
                                 chdd.addItemListener(this);
 
-                            } else if (src == chdd)
-                            {
-                                // filling day
                             } else if (src == chmslot)
                             {
                                 cbms.removeItemListener(this);

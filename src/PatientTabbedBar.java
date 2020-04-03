@@ -8,13 +8,11 @@ class PatientTabbedBar extends JFrame implements ActionListener
 
         private JPanel logout;
         private JButton btlogout;
-        static String userp;
+        private String userp;
 
-        PatientTabbedBar()
+        PatientTabbedBar(String userp)
             {
-                userp = PatientLoginHome.userp;
-
-                userlogout();
+                this.userp = userp;
 
                 setVisible(true);
                 setSize(new Dimension(3000, 1000));
@@ -22,10 +20,11 @@ class PatientTabbedBar extends JFrame implements ActionListener
                 setLayout(new BorderLayout());
                 // This is JFrame called in PatientLoginHome // see logout also dispose
                 JTabbedPane jtp = new JTabbedPane();
-                jtp.addTab("Home", new PatientWelcome());
-                jtp.addTab("Search Doctor", new Patient_SearchDoctor());
-                jtp.addTab("About Me", new PatientInfo());
-                jtp.addTab("Manage Password", new Patient_ChangePassword());
+                jtp.addTab("Home", new PatientWelcome(userp));
+                jtp.addTab("Search Doctor", new Patient_SearchDoctor(userp));
+                jtp.addTab("About Me", new PatientInfo(userp));
+                jtp.addTab("Manage Password", new Patient_ChangePassword(userp));
+                userlogout();
                 jtp.addTab("Log Out", logout);
                 jtp.addTab("Contact Us", new ContactUs());
 

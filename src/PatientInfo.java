@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
@@ -45,12 +44,12 @@ class PatientInfo extends JPanel implements ActionListener, ItemListener, FocusL
         private JCheckBox[] ch;
         private CardLayout CLO;
         private String trial;
-        private final String userp;
+        private String userp;
 
-        PatientInfo()
+        PatientInfo(String userp)
             {
 
-                userp = PatientTabbedBar.userp; // taking username from previous login form
+                this.userp = userp; // taking username from previous login form
 
                 String need = "*";
                 trial = "";
@@ -626,42 +625,39 @@ class PatientInfo extends JPanel implements ActionListener, ItemListener, FocusL
 
             {
 
-                Color c1 = new Color(20, 110, 140);
-                Font f1 = new Font("comic sans", Font.ITALIC + Font.BOLD, 20);
-                Font f2 = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
-                Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
-                Border loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+                Font ftitle = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
                 Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-                Border raisedbevel = BorderFactory.createRaisedBevelBorder();
-                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: ABOUT ME ::", TitledBorder.CENTER, TitledBorder.TOP, f2, Color.red);
+                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: ABOUT ME ::", TitledBorder.CENTER, TitledBorder.TOP, ftitle, Color.red);
                 Border k = BorderFactory.createMatteBorder(0, 10, 0, 0, Color.red);
                 P.setBorder(BorderFactory.createCompoundBorder(h, k));
 
-                lbuser.setFont(f1);
-                lbemail.setFont(f1);
-                lbmobile.setFont(f1);
-                lbgender.setFont(f1);
-                lbstatus.setFont(f1);
-                lbdob.setFont(f1);
-                lblocation.setFont(f1);
-                lbaddress.setFont(f1);
-                lbstate.setFont(f1);
-                lbcity.setFont(f1);
-                lbdisease.setFont(f1);
-                lbpast.setFont(f1);
+                Font flb = new Font("comic sans", Font.ITALIC + Font.BOLD, 20);
+                lbuser.setFont(flb);
+                lbemail.setFont(flb);
+                lbmobile.setFont(flb);
+                lbgender.setFont(flb);
+                lbstatus.setFont(flb);
+                lbdob.setFont(flb);
+                lblocation.setFont(flb);
+                lbaddress.setFont(flb);
+                lbstate.setFont(flb);
+                lbcity.setFont(flb);
+                lbdisease.setFont(flb);
+                lbpast.setFont(flb);
 
-                lbuser.setForeground(c1);
-                lbemail.setForeground(c1);
-                lbmobile.setForeground(c1);
-                lbgender.setForeground(c1);
-                lbstatus.setForeground(c1);
-                lbdob.setForeground(c1);
-                lblocation.setForeground(c1);
-                lbaddress.setForeground(c1);
-                lbstate.setForeground(c1);
-                lbcity.setForeground(c1);
-                lbdisease.setForeground(c1);
-                lbpast.setForeground(c1);
+                Color clb = new Color(20, 110, 140);
+                lbuser.setForeground(clb);
+                lbemail.setForeground(clb);
+                lbmobile.setForeground(clb);
+                lbgender.setForeground(clb);
+                lbstatus.setForeground(clb);
+                lbdob.setForeground(clb);
+                lblocation.setForeground(clb);
+                lbaddress.setForeground(clb);
+                lbstate.setForeground(clb);
+                lbcity.setForeground(clb);
+                lbdisease.setForeground(clb);
+                lbpast.setForeground(clb);
 
 
             }

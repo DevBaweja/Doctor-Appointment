@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +16,6 @@ class Doctor_Setschedule extends JPanel implements ItemListener, ActionListener
         // This will not check whether it will present or not
         // it will be executed only once
 
-        private final String userd;
         private final JCheckBox[] ch;
         private final JButton btsetschedule;
         private final JPanel Pmain;
@@ -35,10 +33,11 @@ class Doctor_Setschedule extends JPanel implements ItemListener, ActionListener
         // me morning end
         // es evening start
         // ee evening end
+        private final String userd;
 
-        Doctor_Setschedule()
+        Doctor_Setschedule(String userd)
             {
-                userd = DoctorTabbedBar.userd;
+                this.userd = userd;
                 k = "";
                 setVisible(true);
                 setSize(700, 700);
@@ -201,7 +200,7 @@ class Doctor_Setschedule extends JPanel implements ItemListener, ActionListener
                                 // if we dont set this button disable
                                 // if once pressed anything then k = 0000000 otherwise k = ""  !(k.equals("0000000") || k.equals(""))
                                 insertform();
-                                enableall(false);
+                                enableall();
 						/*this.remove(Pmain);
 						this.remove(P);
 						remove(this);*/
@@ -255,41 +254,37 @@ class Doctor_Setschedule extends JPanel implements ItemListener, ActionListener
 
         private void style()
             {
-                Color c1 = new Color(20, 110, 140);
-                Font f2 = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
-                Font f1 = new Font("comic sans", Font.ITALIC + Font.BOLD, 30);
-                Font f = new Font("comic sans", Font.ITALIC + Font.BOLD, 20);
-                Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
-                Border loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+                Font ftitle = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
                 Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-                Border raisedbevel = BorderFactory.createRaisedBevelBorder();
-                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: DOCTOR SCHEDULE ::", TitledBorder.CENTER, TitledBorder.TOP, f2, Color.red);
+                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: DOCTOR SCHEDULE ::", TitledBorder.CENTER, TitledBorder.TOP, ftitle, Color.red);
                 Border k = BorderFactory.createMatteBorder(0, 10, 0, 0, Color.red);
                 Pmain.setBorder(BorderFactory.createCompoundBorder(h, k));
 
-                lbset.setFont(f1);
-                lbms.setFont(f);
-                lbme.setFont(f);
-                lbes.setFont(f);
-                lbee.setFont(f);
+                Font flb = new Font("comic sans", Font.ITALIC + Font.BOLD, 20);
+                lbset.setFont(flb);
+                lbms.setFont(flb);
+                lbme.setFont(flb);
+                lbes.setFont(flb);
+                lbee.setFont(flb);
 
-                lbset.setForeground(c1);
-                lbms.setForeground(c1);
-                lbme.setForeground(c1);
-                lbes.setForeground(c1);
-                lbee.setForeground(c1);
-                btsetschedule.setForeground(c1);
+                Color clb = new Color(20, 110, 140);
+                lbset.setForeground(clb);
+                lbms.setForeground(clb);
+                lbme.setForeground(clb);
+                lbes.setForeground(clb);
+                lbee.setForeground(clb);
+                btsetschedule.setForeground(clb);
             }
 
-        private void enableall(boolean status)
+        private void enableall()
             {
-                cbms.setEnabled(status);
-                cbme.setEnabled(status);
-                cbes.setEnabled(status);
-                cbee.setEnabled(status);
+                cbms.setEnabled(false);
+                cbme.setEnabled(false);
+                cbes.setEnabled(false);
+                cbee.setEnabled(false);
                 for (JCheckBox jCheckBox : ch)
-                    jCheckBox.setEnabled(status);
-                btsetschedule.setEnabled(status);
+                    jCheckBox.setEnabled(false);
+                btsetschedule.setEnabled(false);
             }
 
         private void setdoctorinfotable()
@@ -322,7 +317,6 @@ class Doctor_Setschedule extends JPanel implements ItemListener, ActionListener
                             }
                     } catch (ClassNotFoundException | SQLException ce)
                     {
-
                         ce.printStackTrace();
                     }
             }

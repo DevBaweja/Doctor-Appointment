@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,9 +11,6 @@ import java.util.Objects;
 
 class Doctor_Manageschedule extends JPanel implements ItemListener, ActionListener
     {
-
-
-        private final String userd;
         private final JCheckBox[] ch;
         private final JButton btupdate;
         private final JButton btedit;
@@ -33,10 +29,11 @@ class Doctor_Manageschedule extends JPanel implements ItemListener, ActionListen
         // me morning end
         // es evening start
         // ee evening end
+        private final String userd;
 
-        Doctor_Manageschedule()
+        Doctor_Manageschedule(String userd)
             {
-                userd = DoctorTabbedBar.userd;
+                this.userd = userd;
 
                 setVisible(true);
                 setSize(700, 700);
@@ -305,31 +302,27 @@ class Doctor_Manageschedule extends JPanel implements ItemListener, ActionListen
 
         private void style()
             {
-                Color c1 = new Color(20, 110, 140);
-                Font f2 = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
-                Font f1 = new Font("comic sans", Font.ITALIC + Font.BOLD, 30);
-                Font f = new Font("comic sans", Font.ITALIC + Font.BOLD, 20);
-                Border raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
-                Border loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+                Font ftitle = new Font("comic sans", Font.ITALIC + Font.BOLD, 40);
                 Border loweredbevel = BorderFactory.createLoweredBevelBorder();
-                Border raisedbevel = BorderFactory.createRaisedBevelBorder();
-                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: DOCTOR SCHEDULE ::", TitledBorder.CENTER, TitledBorder.TOP, f2, Color.red);
+                Border h = BorderFactory.createTitledBorder(loweredbevel, ":: DOCTOR SCHEDULE ::", TitledBorder.CENTER, TitledBorder.TOP, ftitle, Color.red);
                 Border k = BorderFactory.createMatteBorder(0, 10, 0, 0, Color.red);
                 Pmain.setBorder(BorderFactory.createCompoundBorder(h, k));
 
-                lbset.setFont(f1);
-                lbms.setFont(f);
-                lbme.setFont(f);
-                lbes.setFont(f);
-                lbee.setFont(f);
+                Font flb = new Font("comic sans", Font.ITALIC + Font.BOLD, 20);
+                lbset.setFont(flb);
+                lbms.setFont(flb);
+                lbme.setFont(flb);
+                lbes.setFont(flb);
+                lbee.setFont(flb);
 
-                lbset.setForeground(c1);
-                lbms.setForeground(c1);
-                lbme.setForeground(c1);
-                lbes.setForeground(c1);
-                lbee.setForeground(c1);
-                btupdate.setForeground(c1);
-                btedit.setForeground(c1);
+                Color clb = new Color(20, 110, 140);
+                lbset.setForeground(clb);
+                lbms.setForeground(clb);
+                lbme.setForeground(clb);
+                lbes.setForeground(clb);
+                lbee.setForeground(clb);
+                btupdate.setForeground(clb);
+                btedit.setForeground(clb);
 
             }
 

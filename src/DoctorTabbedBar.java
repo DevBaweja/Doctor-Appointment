@@ -10,11 +10,11 @@ class DoctorTabbedBar extends JDialog implements ActionListener
         private int c;
         private JPanel logout;
         private JButton btlogout;
-        static String userd;
+        private String userd;
 
-        DoctorTabbedBar()
+        DoctorTabbedBar(String userd)
             {
-                userd = DoctorLoginHome.userd; // taking username from previous login form
+                this.userd = userd; // taking username from previous login form
 
 
                 setVisible(true);
@@ -24,14 +24,14 @@ class DoctorTabbedBar extends JDialog implements ActionListener
                 JTabbedPane jtp = new JTabbedPane();
 
                 userlogout();
-                jtp.addTab("Home", new DoctorWelcome());
+                jtp.addTab("Home", new DoctorWelcome(userd));
                 if (checkschedule())
                     {
-                        jtp.addTab("MyAppointment", new DoctorMyAppointment());
-                        //Jtp.addTab("MyAppointment", new TodayDate());
-                        jtp.addTab("About Me", new DoctorInfo());
-                        jtp.addTab("Manage Password", new Doctor_ChangePassword());
-                        jtp.addTab("Manage Schedule", new Doctor_Manageschedule());
+                        jtp.addTab("MyAppointment", new DoctorMyAppointment(userd));
+                        // Jtp.addTab("MyAppointment", new TodayDate(userd));
+                        jtp.addTab("About Me", new DoctorInfo(userd));
+                        jtp.addTab("Manage Password", new Doctor_ChangePassword(userd));
+                        jtp.addTab("Manage Schedule", new Doctor_Manageschedule(userd));
                         jtp.addTab("Log Out", logout);
                         jtp.addTab("Contact Us", new ContactUs());
 
@@ -39,9 +39,8 @@ class DoctorTabbedBar extends JDialog implements ActionListener
                         jtp.setBackgroundAt(4, Color.red);
                         jtp.setBackgroundAt(5, Color.red);
                     } else
-
                     {
-                        jtp.addTab("Set Schedule", new Doctor_Setschedule());
+                        jtp.addTab("Set Schedule", new Doctor_Setschedule(userd));
                         jtp.addTab("Log Out", logout);
                         jtp.addTab("Contact Us", new ContactUs());
 
@@ -81,7 +80,6 @@ class DoctorTabbedBar extends JDialog implements ActionListener
 
                     } catch (ClassNotFoundException | SQLException e)
                     {
-
                         e.printStackTrace();
                     }
 
@@ -108,8 +106,7 @@ class DoctorTabbedBar extends JDialog implements ActionListener
                     {
                         int ans = JOptionPane.showConfirmDialog(null, "Do you really want to logout ,Doctor " + userd, "Are you sure?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                         if (ans == JOptionPane.YES_OPTION)
-                            this.dispose(); //when it is frame
-                        userd = ""; // it will remove that patientuser
+                            this.dispose();
                     }
             }
     }
